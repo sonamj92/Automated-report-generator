@@ -23,7 +23,7 @@ function curl_download($Url){
 				/*Split the scraped source code*/
         $parts = preg_split('~(</?[\w][^>]*>)~', $output, -1, PREG_SPLIT_DELIM_CAPTURE | PREG_SPLIT_NO_EMPTY);
 
-     //  print_r($parts);
+		//print_r($parts);
         $lengthArray = count($parts);
 
     //    print_r($lengthArray);
@@ -50,7 +50,22 @@ function curl_download($Url){
 					//break;
 				}
 			}
-		
+			
+			if(preg_match('/\b(\d?) Bedroom+/', $parts[$x], $matches4))
+			{
+				if(preg_match('/(?<!\d)\d{1}(?!\d)/', $parts[$x], $matches))	
+					{
+						echo("Bedrooms: $matches[0], $x \n");
+					}
+			}
+			
+			if(preg_match('/\b(\d?) Bathroom+/', $parts[$x], $matches4))
+			{
+				if(preg_match('/(?<!\d)\d{1}(?!\d)/', $parts[$x], $matches))	
+					{
+						echo("Bathrooms: $matches[0], $x \n");
+					}
+			}
 		}
 }
 ?>
