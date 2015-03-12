@@ -50,6 +50,12 @@ function curl_download($Url){
 					//break;
 				}
 			}
+			
+			if(preg_match('Bedroom\s\w+\s'))
+			{
+				echo("hi");
+				)
+			}
 		
 		}
 }
