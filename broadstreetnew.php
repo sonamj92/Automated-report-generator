@@ -1,5 +1,5 @@
 <?php
-			/*Passing the website to the function*/
+                        /*Passing the website to the function*/
 print curl_download('https://www.broadstreet.ca/property/131/Merecroft+Gardens/');
 
 function curl_download($Url){
@@ -14,14 +14,11 @@ function curl_download($Url){
         $output = curl_exec($ch);
         curl_close($ch);
 
-		$start = strpos($output, '<h3 class="h4">Property Details</h3>');
+                $start = strpos($output, '<h3 class="h4">Property Details</h3>');
         $end = strpos($output, '</div><!-- property_details_content -->', $start);
         $length = $end-$start;
         $output = substr($output, $start, $length);
-
-		echo($output);
 		
-				
-		}
-
+		echo($output);
+}
 ?>
