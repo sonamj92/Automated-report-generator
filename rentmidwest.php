@@ -34,6 +34,7 @@ $count = 0;
 				if(preg_match('/(?<!\d)\d{1}(?!\d)/', $parts[$x], $matches))	
 					{
 						echo("Bedrooms: $matches[0]  \n ");
+					
 						
 					}
 			}
@@ -60,6 +61,7 @@ $count = 0;
                                        break;
 										
                                 }
+								break;
                         }
 
                 }
