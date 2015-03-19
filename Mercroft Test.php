@@ -2,7 +2,7 @@
 			/*Passing the website to the function*/
 //print curl_download('http://www.har-par.com/properties.php?PropertyID=141');
 //print curl_download('http://www.har-par.com/properties.php?PropertyID=6');
-//print curl_download('https://www.broadstreet.ca/property/131/Merecroft+Gardens/');
+print curl_download('http://www.rentmidwest.com/property/village-southgate');
 
 function curl_download($Url){
 
@@ -25,10 +25,10 @@ function curl_download($Url){
         $parts = preg_split('~(</?[\w][^>]*>)~', $string_html, -1, PREG_SPLIT_DELIM_CAPTURE | PREG_SPLIT_NO_EMPTY);
 
 				
-		print_r($parts);
+		//print_r($parts);
         $lengthArray = count($parts);
 
-    //    print_r($lengthArray);
+    //   print_r($lengthArray);
 		
 		for($x =1; $x < $lengthArray; $x++)
 		{
