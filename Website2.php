@@ -2,7 +2,7 @@
 			/*Passing the website to the function*/
 //print curl_download('http://www.har-par.com/properties.php?PropertyID=141');
 //print curl_download('http://www.har-par.com/properties.php?PropertyID=6');
-//print curl_download('https://www.broadstreet.ca/property/131/Merecroft+Gardens/');
+print curl_download('https://www.broadstreet.ca/property/131/Merecroft+Gardens/');
 
 function curl_download($Url){
 
@@ -15,15 +15,16 @@ function curl_download($Url){
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         $output = curl_exec($ch);
         curl_close($ch);
+		
+		$start = strpos($output, '<div class="col-sm-4 unit_details_col unit_info">">');
+        $end = strpos($output, '<div class="col-sm-3 col-xs-12 unit_details_col unit_btns">', $start);
+        $length = $end-$start;
+        $output = substr($output, $start, $length);
 
-		preg_match('~<body[^>]*>(.*?)</body>~is', $output, $html);
-		$string_html = implode(',',$html);
 
-     
+        // return $output;
 
-				/*Split the scraped source code*/
-        $parts = preg_split('~(</?[\w][^>]*>)~', $string_html, -1, PREG_SPLIT_DELIM_CAPTURE | PREG_SPLIT_NO_EMPTY);
-
+        $parts = preg_split('~(</?[\w][^>]*>)~', $output, -1, PREG_SPLIT_DELIM_CAPTURE | PREG_SPLIT_NO_EMPTY);
 				
 		print_r($parts);
         $lengthArray = count($parts);
