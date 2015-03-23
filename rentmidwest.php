@@ -22,9 +22,9 @@ function curl_download($Url){
      
 		 $parts = preg_split('~(</?[\w][^>]*>)~', $output, -1, PREG_SPLIT_DELIM_CAPTURE | PREG_SPLIT_NO_EMPTY);
 
-     print_r($parts);
+		print_r($parts);
         $lengthArray = count($parts);
-$count = 0;
+
       //  print_r($lengthArray);
 		for($x =1; $x < $lengthArray; $x++)
 		{
@@ -34,6 +34,7 @@ $count = 0;
 				if(preg_match('/(?<!\d)\d{1}(?!\d)/', $parts[$x], $matches))	
 					{
 						echo("Bedrooms: $matches[0]  \n ");
+						
 						
 					}
 			}
