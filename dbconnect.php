@@ -1,16 +1,11 @@
 <?php
 
-$user = 'root';
-$pass = '';
-$db = 'kelson_test';
+$accounts = mysql_connect("localhost", "root", "")
+or die(mysql_error());
 
-$conn = new mysqli('localhost', $user, $pass, $db) or die("Unable to connect to database");
+mysql_select_db("kelson_test", $accounts);
 
-$sql = '"insert into kelson_test.website1 (no_of_bedrooms) values ('2');"';
-echo ($sql);
+$sql = "DROP table website1";
 
-if (!mysql_query($sql)) {
-	die('Error: ' . mysql_error());
-}					
-echo "Great work";
+mysql_query($sql, $accounts);
 ?>
