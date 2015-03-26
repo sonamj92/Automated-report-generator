@@ -1,18 +1,10 @@
 <?php
 			
 			
-$accounts = mysql_connect("localhost", "root", "")
-or die(mysql_error());
-
-mysql_select_db("kelson_test", $accounts);
-
-
-			
+	
 			/*Passing the website to the function*/
 
 print curl_download('http://www.rentmidwest.com/property/village-southgate');
-
-
 
 
 function curl_download($Url){
@@ -38,12 +30,7 @@ function curl_download($Url){
 	//	print_r($parts);
         $lengthArray = count($parts);
 		
-		$a = array(
-			"beds" => 0,
-			"area" => 0,
-			"price" => 0 ,
-			);
-		
+	
 		
 		$beds = 0;
 		
@@ -59,7 +46,7 @@ function curl_download($Url){
 						$beds = $matches[0];
 						if ($beds == 0)
 							$beds = "Bach";
-						echo $beds;
+						//echo $beds;
 							
 					}
 			}
@@ -97,7 +84,7 @@ function curl_download($Url){
 											"price" => $price,
 										];
 									
-									store(var_dump(json_encode($a)));
+									store((json_encode($a)));
 									
 										
 										
@@ -113,21 +100,21 @@ function curl_download($Url){
 
 		function store($jsonobj)
 		{
-			$data = json_decode($jsonobj, true);
+			$data[] = json_decode($jsonobj);
 			
-			$beds = $data['beds'];
-			$area = $data['area'];
-			$price = $data['price'];
+			foreach ($data as $v)
+				echo $v;
+		//	$beds = $data['beds'];
+		//	$area = $jsonobj['area'];
+		//	$price = $jsonobj['price'];
 			
-			echo $beds;
-			echo $area;
-			echo $price;
+			
 		
-		$accounts = mysql_connect("localhost", "root", "")
-			or die(mysql_error());
+	//	$accounts = mysql_connect("localhost", "root", "")
+		//	or die(mysql_error());
 
-		mysql_select_db("kelson_test", $accounts);
-	
+	//	mysql_select_db("kelson_test", $accounts);
+//	
 	//	$sql = "INSERT INTO Kelson_Test.test(beds, baths, area, price, deposit) VALUES('$beds', '0', '$area', '$price', '0')";
 	//	if(!mysql_query($sql, $accounts))
 	//	{
