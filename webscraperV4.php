@@ -1,20 +1,20 @@
 <?php
 
-//curl_download('http://www.bwalk.com/en-CA/Rent/Details/Alberta/Edmonton/Fairmont-Village/');
+curl_download('http://www.bwalk.com/en-CA/Rent/Details/Alberta/Edmonton/Fairmont-Village/');
 
-//curl_download('http://www.bwalk.com/en-CA/Rent/Details/Alberta/Edmonton/Meadowview-Manor/');
+curl_download('http://www.bwalk.com/en-CA/Rent/Details/Alberta/Edmonton/Meadowview-Manor/');
 
-//curl_download('http://www.har-par.com/properties.php?PropertyID=6');
+curl_download('http://www.har-par.com/properties.php?PropertyID=6');
 
 curl_download('http://www.har-par.com/properties.php?PropertyID=141');
 
-//curl_download('http://www.rentmidwest.com/property/village-southgate');
+curl_download('http://www.rentmidwest.com/property/village-southgate');
 
-//curl_download('http://www.rentedmonton.com/Detail.aspx?prop=d46d9fab-d7bf-43e9-bf2e-c73ee30f26a1');
+curl_download('http://www.rentedmonton.com/Detail.aspx?prop=d46d9fab-d7bf-43e9-bf2e-c73ee30f26a1');
 
-// curl_download('https://www.broadstreet.ca/property/131/Merecroft+Gardens/');
+curl_download('https://www.broadstreet.ca/property/131/Merecroft+Gardens/');
 
-// curl_download('https://www.broadstreet.ca/property/131/Merecroft+Gardens/');
+curl_download('https://www.broadstreet.ca/property/131/Merecroft+Gardens/');
 
 
 //need to input move in date //curl_download('http://www.parkplacesouthapartments.com/edmonton/park-place-south-apartment-homes/launch-check-availability/1/');
@@ -58,7 +58,7 @@ function curl_download($Url)
 
         $parts = preg_split('~(</?[\w][^>]*>)~',$string_html , -1, PREG_SPLIT_DELIM_CAPTURE | PREG_SPLIT_NO_EMPTY);
 
-        print_r($parts);
+      //  print_r($parts);
         $lengthArray = count($parts);
 
         //print_r($lengthArray);

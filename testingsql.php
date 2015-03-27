@@ -84,7 +84,7 @@ function curl_download($Url){
 											"price" => $price,
 										];
 									
-									store((json_encode($a)));
+									store(var_dump(json_encode($a)));
 									
 										
 										
