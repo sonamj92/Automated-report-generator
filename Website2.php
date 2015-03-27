@@ -1,8 +1,7 @@
 <?php
 			/*Passing the website to the function*/
-//print curl_download('http://www.har-par.com/properties.php?PropertyID=141');
+print curl_download('http://www.har-par.com/properties.php?PropertyID=141');
 //print curl_download('http://www.har-par.com/properties.php?PropertyID=6');
-print curl_download('https://www.broadstreet.ca/property/131/Merecroft+Gardens/');
 
 function curl_download($Url){
 
@@ -16,8 +15,8 @@ function curl_download($Url){
         $output = curl_exec($ch);
         curl_close($ch);
 		
-		$start = strpos($output, '<div class="col-sm-4 unit_details_col unit_info">">');
-        $end = strpos($output, '<div class="col-sm-3 col-xs-12 unit_details_col unit_btns">', $start);
+		$start = strpos($output, '<body>');
+        $end = strpos($output, '</body>', $start);
         $length = $end-$start;
         $output = substr($output, $start, $length);
 
@@ -26,7 +25,7 @@ function curl_download($Url){
 
         $parts = preg_split('~(</?[\w][^>]*>)~', $output, -1, PREG_SPLIT_DELIM_CAPTURE | PREG_SPLIT_NO_EMPTY);
 				
-		print_r($parts);
+	//	print_r($parts);
         $lengthArray = count($parts);
 
     //    print_r($lengthArray);
@@ -39,9 +38,11 @@ function curl_download($Url){
 				if(preg_match('/\$\d+(\.\d+)?.*/', $parts[$x], $matches))
 				{
 					echo nl2br("Price: $matches[0] $x \n");
-					//break;
-					
+									
 				}
+				$price = $matches[0];
+				echo $price;
+				echo("printed the price variable\n \n");
 			}
 			
 			if(preg_match('%Deposit%', $parts[$x], $matches3))
@@ -60,6 +61,9 @@ function curl_download($Url){
 					{
 						echo("Bedrooms: $matches[0] $x \n ");
 					}
+				$no_of_bedrooms = $matches[0];
+				echo("\n no of beds");
+				echo($no_of_bedrooms);
 			}
 			
 			if(preg_match('/\b(\d?) Bathroom+/', $parts[$x], $matches4))
