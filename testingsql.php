@@ -8,7 +8,8 @@ print curl_download('http://www.rentmidwest.com/property/village-southgate');
 
 
 function curl_download($Url){
-
+		
+		
          if (!function_exists('curl_init')){
                 die('Curl is not installed. Install try again.');
         }
@@ -84,43 +85,39 @@ function curl_download($Url){
 											"price" => $price,
 										];
 									
-									store(var_dump(json_encode($a)));
-									
-										
-										
-									
-					
-		
-                }
+									$string = json_encode($a);
+									store($string, $Url);
+				}
 			}
 			
 			
 			
 		}
 
-		function store($jsonobj)
+		function store($string, $Url)
 		{
-			$data[] = json_decode($jsonobj);
-			
-			foreach ($data as $v)
-				echo $v;
+		//	$data[] = json_decode($jsonobj);
+		//	
+		//	foreach ($data as $v)
+			//	echo $v;
 		//	$beds = $data['beds'];
 		//	$area = $jsonobj['area'];
 		//	$price = $jsonobj['price'];
 			
 			
 		
-	//	$accounts = mysql_connect("localhost", "root", "")
-		//	or die(mysql_error());
+		$accounts = mysql_connect("localhost", "root", "")
+			or die(mysql_error());
 
-	//	mysql_select_db("kelson_test", $accounts);
-//	
-	//	$sql = "INSERT INTO Kelson_Test.test(beds, baths, area, price, deposit) VALUES('$beds', '0', '$area', '$price', '0')";
-	//	if(!mysql_query($sql, $accounts))
-	//	{
-     // die('Error : ' . mysql_error());
-	//	}
-					
+		mysql_select_db("kelson_test", $accounts);
+
+		$sql = "INSERT INTO kelson_test.scraped_data_details(report_id, report_data, url) VALUES(1, '$string', '$Url')";
+		if(!mysql_query($sql, $accounts))
+		{
+			die('Error : ' . mysql_error());
 		}
+		}
+					
+		
 
 ?>
