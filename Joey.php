@@ -26,22 +26,14 @@ function curl_download($Url)
         $output = curl_exec($ch);
         curl_close($ch);
 
-        //$html=$output;
-
+ 
         preg_match('~<body[^>]*>(.*?)</body>~si', $output, $html);
         $string_html = implode(',',$html);
 
-        //$start = strpos($output, '<div class="large-7 columns property-details">');
-        //$end = strpos($output, '<div class="property-disclaimer">', $start);
-        //$length = $end-$start;
-        //$output = substr($output, $start, $length);
-		
-		 // return $output;
-        //print_r($string_html);
 
         $parts = preg_split('~(</?[\w][^>]*>)~',$string_html , -1, PREG_SPLIT_DELIM_CAPTURE | PREG_SPLIT_NO_EMPTY);
 
-        print_r($parts);
+     //   print_r($parts);
         $lengthArray = count($parts);
 
         //print_r($lengthArray);
@@ -66,9 +58,10 @@ function curl_download($Url)
                                                                 }
                                                          }
                                                 }
+												
 						for($e = $c; $e< $lengthArray; $e++)
                                                 {
-                                                         //echo nl2br ("loops crazy  \n");
+                                                        
                                                         if(preg_match('/(?i)price+?/',$parts[$e],$matches3))
                                                         {
                                                                 echo nl2br ("$matches3[0]  \n");
@@ -80,7 +73,7 @@ function curl_download($Url)
                                                                                 //print_r ($matches[0]);
                                                                                 break ;
                                                                         }
-                                                                        //break;
+                                                                        
                                                                 }
                                                                 break;
                                                         }
@@ -106,8 +99,7 @@ function curl_download($Url)
                                                 {
                                                         if(preg_match('/\b(?<!\d)(?i)square+?\b/',$parts[$g],$matches7))
                                                         {
-                                                                //echo nl2br ("SQ  $matches7[0] $x \n");
-                                                                //print_r ($matches4[0] );
+                                                               
 
                                                                 if(preg_match('/(?<!\d)([0-9]+)(?!\d)/',$parts[$g],$matches))
                                                                 {

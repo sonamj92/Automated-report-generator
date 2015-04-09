@@ -1,6 +1,5 @@
 <?php
 			
-			
 	
 			/*Passing the website to the function*/
 
@@ -14,21 +13,20 @@ function curl_download($Url){
                 die('Curl is not installed. Install try again.');
         }
 
-        $ch = curl_init();
+       $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, $Url);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         $output = curl_exec($ch);
         curl_close($ch);
 
-		$start = strpos($output, '<ul class="unitsAvailable">');
-        $end = strpos($output, '<div id="propertyVirtualTours" style="display:block;">', $start);
-        $length = $end-$start;
-        $output = substr($output, $start, $length);
+ 
+        preg_match('~<body[^>]*>(.*?)</body>~si', $output, $html);
+        $string_html = implode(',',$html);
 
-     
-		 $parts = preg_split('~(</?[\w][^>]*>)~', $output, -1, PREG_SPLIT_DELIM_CAPTURE | PREG_SPLIT_NO_EMPTY);
 
-	//	print_r($parts);
+        $parts = preg_split('~(</?[\w][^>]*>)~',$string_html , -1, PREG_SPLIT_DELIM_CAPTURE | PREG_SPLIT_NO_EMPTY);
+
+        
         $lengthArray = count($parts);
 		
 	
@@ -43,11 +41,12 @@ function curl_download($Url){
 			{
 				if(preg_match('/(?<!\d)\d{1}(?!\d)/', $parts[$x], $matches))	
 					{
-					//	echo("Bedrooms: $matches[0]  \n ");
+					
 						$beds = $matches[0];
 						if ($beds == 0)
 							$beds = "Bach";
-						//echo $beds;
+						echo ("Bedrooms: $matches[0] $x ");
+						
 							
 					}
 			}
@@ -57,21 +56,20 @@ function curl_download($Url){
 					
                     if(preg_match('/(?<!\d)([0-9]+)(?!\d)/',$parts[$x],$matches))
 					   {
-                        
-						//echo nl2br ("Square Feet :  $matches[0]  \n");
+                        echo nl2br ("Square Feet :  $matches[0] $x \n");
 						$area = $matches[0];
 						}
 			}
 			
 			if(preg_match('/(?i)from+?/',$parts[$x],$matches2))
                 {
-                //echo nl2br ("$matches2[0]\n");
+                echo nl2br ("$matches2[0]\n");
                         for($i = $x; $i < $lengthArray; $i++)
                         {
                                 if(preg_match('/\$\d+(?:\.\d+)?.*/',$parts[$i],$matches))
                                 {
                                        
-										//echo nl2br ("Price : $matches[0]  \n");
+										echo nl2br ("Price : $matches[0]  \n");
 										$price = $matches[0];
 										break;
 										
@@ -86,38 +84,16 @@ function curl_download($Url){
 										];
 									
 									$string = json_encode($a);
-									store($string, $Url);
+									
+								//	store($string, $Url);
 				}
 			}
 			
 			
 			
 		}
-
-		function store($string, $Url)
-		{
-		//	$data[] = json_decode($jsonobj);
-		//	
-		//	foreach ($data as $v)
-			//	echo $v;
-		//	$beds = $data['beds'];
-		//	$area = $jsonobj['area'];
-		//	$price = $jsonobj['price'];
-			
-			
 		
-		$accounts = mysql_connect("localhost", "root", "")
-			or die(mysql_error());
-
-		mysql_select_db("kelson_test", $accounts);
-
-		$sql = "INSERT INTO kelson_test.scraped_data_details(report_id, report_data, url) VALUES(1, '$string', '$Url')";
-		if(!mysql_query($sql, $accounts))
-		{
-			die('Error : ' . mysql_error());
-		}
-		}
-					
+	
 		
 
 ?>

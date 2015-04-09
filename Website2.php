@@ -1,7 +1,7 @@
 <?php
 			/*Passing the website to the function*/
-print curl_download('http://www.har-par.com/properties.php?PropertyID=141');
-//print curl_download('http://www.har-par.com/properties.php?PropertyID=6');
+//print curl_download('http://www.har-par.com/properties.php?PropertyID=141');
+print curl_download('http://www.har-par.com/properties.php?PropertyID=6');
 
 function curl_download($Url){
 
@@ -29,6 +29,9 @@ function curl_download($Url){
         $lengthArray = count($parts);
 
     //    print_r($lengthArray);
+			echo $Url;
+			$bathrooms = 0;
+			
 		
 		for($x =1; $x < $lengthArray; $x++)
 		{
@@ -37,12 +40,11 @@ function curl_download($Url){
 		
 				if(preg_match('/\$\d+(\.\d+)?.*/', $parts[$x], $matches))
 				{
-					echo nl2br("Price: $matches[0] $x \n");
-									
+					echo nl2br("Price: $matches[0] $x \n");		
+					//break;
 				}
-				$price = $matches[0];
-				echo $price;
-				echo("printed the price variable\n \n");
+				
+				
 			}
 			
 			if(preg_match('%Deposit%', $parts[$x], $matches3))
@@ -51,19 +53,17 @@ function curl_download($Url){
 				if(preg_match('/\$\d+(\.\d+)?.*/', $parts[$x], $matches))
 				{
 					echo nl2br("Security Deposit: $matches[0] $x \n");
-					//break;
+					
 				}
 			}
 			
-			if(preg_match('/\b(\d?) Bedroom+/', $parts[$x], $matches4))
+			if(preg_match('/(\d?) Bedroom/', $parts[$x], $matches4))
 			{
 				if(preg_match('/(?<!\d)\d{1}(?!\d)/', $parts[$x], $matches))	
 					{
 						echo("Bedrooms: $matches[0] $x \n ");
 					}
-				$no_of_bedrooms = $matches[0];
-				echo("\n no of beds");
-				echo($no_of_bedrooms);
+				
 			}
 			
 			if(preg_match('/\b(\d?) Bathroom+/', $parts[$x], $matches4))
@@ -73,6 +73,7 @@ function curl_download($Url){
 						echo("Bathrooms: $matches[0] $x \n");
 					}
 			}
+			
 			
 			 if(preg_match('/\b(?<!\d)(?i)square+?\b/',$parts[$x],$matches5))
 			{
