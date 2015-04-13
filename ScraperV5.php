@@ -9,7 +9,7 @@
 
 //curl_download('http://www.har-par.com/properties.php?PropertyID=141');
 
-curl_download('http://www.rentmidwest.com/property/village-southgate');
+curl_download('http://www.kelsongroup.com/apartments/callingwood-on-170th-apartments-in-edmonton');
 
 //curl_download('http://www.rentedmonton.com/Detail.aspx?prop=d46d9fab-d7bf-43e9-bf2e-c73ee30f26a1');
 

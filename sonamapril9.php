@@ -5,17 +5,17 @@ $web1 = curl_download('http://www.bwalk.com/en-CA/Rent/Details/Alberta/Edmonton/
 
 $web2 = curl_download('http://www.bwalk.com/en-CA/Rent/Details/Alberta/Edmonton/Meadowview-Manor/' ,'Meadowview-Manor -Edmonton');
 
-$web3 = curl_download('http://www.rentmidwest.com/property/village-southgate', 'Rentmidwest Edmonton SOuthgate');
+//$web3 = curl_download('http://www.rentmidwest.com/property/village-southgate', 'Rentmidwest Edmonton SOuthgate');
 
-$finalarray['Fairmont'] = $web1;
-$finalarray['Fairmont2'] = $web2;
-$finalarray['RentMidwest'] = $web3;
+$finalarray['BWALK'] = $web1;
+$finalarray['BWALK2'] = $web2;
+//$finalarray['RentMidwest'] = $web3;
 print_r (json_encode($finalarray));
 
 
-$string = json_decode($finalarray);
+/*$string = json_decode($finalarray);
 print_r($finalarray);
-echo $finalarray['Fairmont']['Area'];
+echo $finalarray['Fairmont']['1Bdrm'];*/
 
 
 //curl_download('http://www.har-par.com/properties.php?PropertyID=6');
@@ -233,8 +233,8 @@ function curl_download($Url, $name)
                                 }
 						
 					$a1 = array(
-												"Property Type" => "1 BDRM",
-												"Website" => $name,
+											//	"Property Type" => "1 BDRM",
+											//	"Website" => $name,
 												"Rent" => $rent,
 												"Deposit" => $deposit,
 												"Area" => $area,
@@ -426,8 +426,8 @@ function curl_download($Url, $name)
 					
 			}
 		$final = array();
-		$final[0] = $a1;
-		$final[1] = $a2;
+		$final[$name]['1BD'] = $a1;
+		$final[$name]['2BD'] = $a2;
 		return($final);
 		
 };
