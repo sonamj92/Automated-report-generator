@@ -6,11 +6,11 @@
 
 //curl_download('http://www.har-par.com/properties.php?PropertyID=6');
 
-//curl_download('http://www.har-par.com/properties.php?PropertyID=141');
+curl_download('http://www.har-par.com/properties.php?PropertyID=141');
 
 //curl_download('http://www.rentmidwest.com/property/village-southgate');
 
-curl_download('http://www.rentedmonton.com/Detail.aspx?prop=d46d9fab-d7bf-43e9-bf2e-c73ee30f26a1');
+//curl_download('http://www.rentedmonton.com/Detail.aspx?prop=d46d9fab-d7bf-43e9-bf2e-c73ee30f26a1');
 
 //curl_download('https://www.broadstreet.ca/property/131/Merecroft+Gardens/');
 
@@ -48,7 +48,7 @@ function curl_download($Url)
         $lengthArray = count($parts);    
 		$temp=1;
 		
-		print_r($parts);
+	//	print_r($parts);
 
 			/*This loop will find details of Bachelor suites from all the websites. Once it matches, it will run internal for loops to find number of bathrooms, deposit and rental price*/
 		for($c1 = 1; $c1 < $lengthArray; $c1++)
@@ -59,7 +59,7 @@ function curl_download($Url)
 				$c1=400;
 			}
 		
-            if(preg_match('/^\W*(?:\w+\b\W*){1,15}(?i)Bachelor:|bachelor+?/',$parts[$c1],$matches2))
+            if(preg_match('/^\W*(?:\w+\b\W*){1,15}bach|Bachelor/',$parts[$c1],$matches2))
             {
                 echo nl2br ("-------------- $matches2[0]  ---------- $c1 \n");
 									
@@ -134,11 +134,11 @@ function curl_download($Url)
                     $c2=400;
                 }
 				
-				if(preg_match('/\b^[1].(?i)bedroom|Bedrooms:.[1]|[1].bdrm|bedroom.[1]|[1].bedroom+?\b/',$parts[$c2],$matches2))
+				if(preg_match('/\b^[1].(?i)bedroom|Bedrooms:.[1]|^[1].Bedroom|[1].bdrm|bedroom.[1]|[1].bedroom+?\b/',$parts[$c2],$matches2))
 				{
 					echo nl2br ("-------------- $matches2[0]  ---------- $c2 \n");
-			        
-						/*This for loop will search for the deposit price. Once it finds it, it will break this loop.*/
+			
+					/*This for loop will search for the deposit price. Once it finds it, it will break this loop.*/
 					for($d = $c2; $d < $lengthArray; $d++)
                     {
                         if(preg_match('/(?i)deposit|Deposit:+?/',$parts[$d],$matches5))
@@ -199,11 +199,6 @@ function curl_download($Url)
 				}
 						/*End of for loop that searches for the 1BDRM suite*/
 			}
-			
-			
-			
-			
-			
 
 			
 						/*Third Main for Loop that finds details of 2 BDRM properties */
@@ -277,8 +272,9 @@ function curl_download($Url)
 						break;
                         }
                     }
+					
 							/*Breaks the if loop after it has executed all the statements within or if they do not match the if conditions*/
-                break;
+					break;
 				}
 							/*End of for loop that searches for the 2BDRM suite*/
 			}
@@ -353,6 +349,7 @@ function curl_download($Url)
                             }
                         }
                     }
+					
 						/*Breaks the if loop after it has executed all the statements within or if they do not match the if conditions*/
 				break;
 				}
