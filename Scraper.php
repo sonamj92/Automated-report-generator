@@ -2,15 +2,8 @@
 
 class Scraper
 {
-
-$web1 = curl_download('http://www.bwalk.com/en-CA/Rent/Details/Alberta/Edmonton/Fairmont-Village/');
-
-//curl_download('http://www.bwalk.com/en-CA/Rent/Details/Alberta/Edmonton/Meadowview-Manor/');
-
-//curl_download('http://www.rentmidwest.com/property/village-southgate');
-
 			/*Scraper function definition*/
-public function_curl_download($Url)
+function curl_download($Url, $name)
 {
 			/*Checks whether cURL is installed*/
         if (!function_exists('curl_init'))
@@ -30,7 +23,12 @@ public function_curl_download($Url)
 
         
 		echo nl2br ("****-------------- $Url  ----------****  \n");
-
+		
+		$beds = 0;
+		$area = 0;
+		$rent = 0;
+		$deposit = 0;
+		$bath = 0;
 	
 			/* Finds the body tags*/
         preg_match('~<body[^>]*>(.*?)</body>~si', $output, $html);
@@ -65,6 +63,7 @@ public function_curl_download($Url)
                         if(preg_match('/\$\d+(?:\.\d+)?./',$parts[$d],$matches6))
                         {
                             echo nl2br ("Deposit :  $matches6[0] $d \n");
+							$deposit = $matches6[0];
                             break;
                         }                               
                     }
@@ -79,7 +78,8 @@ public function_curl_download($Url)
                         {
                             if(preg_match('/\$\d\,\d+|\$\d+(?:\.\d+)?.*/',$parts[$i],$matches4))
                             {
-                                echo nl2br ("Price : $matches4[0] $i \n");                                         
+                                echo nl2br ("Price : $matches4[0] $i \n");  
+								$rent = $matches4[0];
                                 break ;
                             }
                         }
@@ -95,6 +95,7 @@ public function_curl_download($Url)
                         if(preg_match('/(?<!\d)\d{1}(?!\d)|\d{1}/',$parts[$f1],$matches))
                         {
                             echo nl2br ("Bathrooms :  $matches[0] $f1 \n");
+							$bath = $matches[0];
                             break;
                         }
 					}
@@ -108,11 +109,19 @@ public function_curl_download($Url)
                         if(preg_match('/(?<!\d)(\d+)(\d+)(?!\d)/',$parts[$g],$matches))
                         {
                             echo nl2br ("Square Feet :  $matches[0] $g \n");
+							$area = $matches[0];
                             break;
                         }
                     }
 					$temp = $g;
                 }
+				
+				$a0 = array(
+									"Rent" => $rent,
+									"Deposit" => $deposit,
+									"Area" => $area,
+									"Bathroom" => $bath,
+								);
 					/*Breaks the if loop after it has executed all the statements within or if they do not match the if conditions*/
                 break;
 			}
@@ -140,6 +149,7 @@ public function_curl_download($Url)
                             if(preg_match('/\$\d\,\d+|\$\d+(?:\.\d+)?.+/',$parts[$d],$matches6))
                             {
 								echo nl2br ("Deposit :  $matches6[0] $d \n");
+								$deposit = $matches6[0];
                                 break;
                             }
 						}
@@ -155,6 +165,7 @@ public function_curl_download($Url)
                                 if(preg_match('/\$\d\,\d+|\$\d+(?:\.\d+)?.*/',$parts[$i],$matches4))
                                 {
                                     echo nl2br ("Price: $matches4[0] $i \n");
+									$rent = $matches4[0];
                                     break ;
                                 }
                             }
@@ -170,6 +181,7 @@ public function_curl_download($Url)
                             if(preg_match('/\d{1}|(?<!\d)\d{1}(?!\d)/',$parts[$f],$matches))
                             {
                                 echo nl2br ("Bathrooms :  $matches[0] $f \n");
+								$bath = $matches[0];
                                 break;
                             }
 						}
@@ -183,11 +195,18 @@ public function_curl_download($Url)
 						    if(preg_match('/(\d+-?)+\d+|(?<!\d)(\d+)(\d+)(?!\d)/',$parts[$g],$matches))
                             {
                                 echo nl2br ("Square Feet :  $matches[0] $g \n");
-								$temp = $g;
+								$area = $matches[0];
 								break;
                             }
                         }
 					}
+					
+					$a1 = array(
+									"Rent" => $rent,
+									"Deposit" => $deposit,
+									"Area" => $area,
+									"Bathroom" => $bath,
+								);
 						/*Breaks the if loop after it has executed all the statements within or if they do not match the if conditions*/
 					break;
 				}
@@ -215,6 +234,7 @@ public function_curl_download($Url)
 							if(preg_match('/\$\d\,\d+|\$\d+(?:\.\d+)?.+/',$parts[$h],$matches6))
                             {
                                 echo nl2br ("Deposit :  $matches6[0] $h \n");
+								$deposit = $matches6[0];
                                 break;
                             }
                         }
@@ -230,6 +250,7 @@ public function_curl_download($Url)
                                 if(preg_match('/\$\d\,\d+|\$\d+(?:\.\d+)?.+/',$parts[$k],$matches4))
                                 {
                                     echo nl2br ("Price : $matches4[0] $k \n");
+									$rent = $matches4[0];
                                     break ;
                                 }
                             }
@@ -245,6 +266,7 @@ public function_curl_download($Url)
 							if(preg_match('/\d{1}|(?<!\d)\d{1}(?!\d)/',$parts[$l],$matches))
                             {
                                 echo nl2br ("Bathrooms :  $matches[0] $l \n");
+								$bath = $matches[0];
                                 break;
                             }
 						}
@@ -260,12 +282,20 @@ public function_curl_download($Url)
 								if(preg_match('/(\d+-?)+\d+|(?<!\d)(\d+)(\d+)(?!\d)/',$parts[$n],$matches))
                                 {
                                     echo nl2br ("Square Feet :  $matches[0] $n \n");
+									$area = $matches[0];
                                     break;
                                 }
 							}
 						break;
                         }
                     }
+					
+					$a2 = array(
+									"Rent" => $rent,
+									"Deposit" => $deposit,
+									"Area" => $area,
+									"Bathroom" => $bath,
+								);
 					
 							/*Breaks the if loop after it has executed all the statements within or if they do not match the if conditions*/
 					break;
@@ -294,6 +324,7 @@ public function_curl_download($Url)
 							if(preg_match('/\$\d+(?:\.\d+)?.*/',$parts[$h3],$matches6))
                             {
                                 echo nl2br ("Deposit : $matches6[0] $h3 \n");
+								$deposit = $matches6[0];
                                 break;
                             }
                         }
@@ -309,6 +340,7 @@ public function_curl_download($Url)
 								if(preg_match('/\$\d\,\d|\$\d+(?:\.\d+)?.+/',$parts[$k3],$matches4))
                                 {
                                     echo nl2br ("Price : $matches4[0] $j3 \n");
+									$rent = $matches4[0];
                                     break ;
 								}
                             }
@@ -321,11 +353,10 @@ public function_curl_download($Url)
                     {
                         if(preg_match('/\b(?<!\d)(?i)Bath|bathrooms+?\b/',$parts[$l3],$matches6))
                         {
-                            echo nl2br ("$matches6[0] $c \n");
-							
-							if(preg_match('/(?<!\d)\d{1}(?!\d)/',$parts[$l3],$matches))
+                            if(preg_match('/(?<!\d)\d{1}(?!\d)/',$parts[$l3],$matches))
                             {
                                 echo nl2br ("Bathrooms : $matches[0] $l3 \n");
+								$bath = $matches[0];
                                 break;
                             }
                         }
@@ -338,18 +369,41 @@ public function_curl_download($Url)
                         {
 							if(preg_match('/(?<!\d)(\d+)(\d+)(?!\d)/',$parts[$m3],$matches))
                             {
-                                echo nl2br ("Square Feet : $matches[0] $c \n");
+                                echo nl2br ("Square Feet : $matches[0] $m3 \n");
+								$area = $matches[0];
                                 break;
                             }
                         }
                     }
+					
+					$a3 = array(
+									"Rent" => $rent,
+									"Deposit" => $deposit,
+									"Area" => $area,
+									"Bathroom" => $bath,
+								);
 					
 						/*Breaks the if loop after it has executed all the statements within or if they do not match the if conditions*/
 				break;
 				}
 						/*End of for loop that searches for the 3BDRM suite*/
 			}
+			
+			$final = array();
+			if(isset($a0))
+				$final[$name]['Bachelor'] = $a0;
+			
+			if(isset($a1))
+				$final[$name]['1BD'] = $a1;
+			
 
+			if(isset($a2))
+				$final[$name]['2BD'] = $a2;
+			
+			if(isset($a3))
+				$final[$name]['3BD'] = $a3;
+			
+			return ($final);
 }
 }
 
