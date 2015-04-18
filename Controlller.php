@@ -17,7 +17,7 @@ $finalarray ['Southgate'] = $web3;
 $string = json_encode($finalarray);
 
 $dbconnect = new dbconnect;
-$status = ($dbconnect -> store($string));
+$dbconnect -> store($string);
 
 
 
