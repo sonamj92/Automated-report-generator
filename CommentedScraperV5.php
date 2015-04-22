@@ -1,17 +1,24 @@
 <?php
 
-class Scraper
-{
 
-$web1 = curl_download('http://www.bwalk.com/en-CA/Rent/Details/Alberta/Edmonton/Fairmont-Village/');
+//curl_download('http://www.bwalk.com/en-CA/Rent/Details/Alberta/Edmonton/Fairmont-Village/');
 
 //curl_download('http://www.bwalk.com/en-CA/Rent/Details/Alberta/Edmonton/Meadowview-Manor/');
 
+//curl_download('http://www.har-par.com/properties.php?PropertyID=6');
+
+//curl_download('http://www.har-par.com/properties.php?PropertyID=141');
+
 //curl_download('http://www.rentmidwest.com/property/village-southgate');
 
+curl_download('http://www.rentedmonton.com/Detail.aspx?prop=d46d9fab-d7bf-43e9-bf2e-c73ee30f26a1');
+
+//curl_download('https://www.broadstreet.ca/property/131/Merecroft+Gardens/');
+
+
 			/*Scraper function definition*/
-public function_curl_download($Url)
-{
+	function curl_download($Url)
+	{
 			/*Checks whether cURL is installed*/
         if (!function_exists('curl_init'))
         {
@@ -351,7 +358,7 @@ public function_curl_download($Url)
 			}
 
 }
-}
+
 
 ?>
 
