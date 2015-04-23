@@ -390,17 +390,21 @@ function curl_download($Url, $name)
 			}
 			
 			$final = array();
-		//f(isset($a0))
+			if(isset($a0))
 				$final[$name]['Bachelor'] = $a0;
+			else 
+				$final[$name]['Bachelor'] = null;
 			
 			if(isset($a1))
 				$final[$name]['1BD'] = $a1;
+			else 
+				$final[$name]['1BD'] = null;
 
 			if(isset($a2))
-				$final[$name]['2BD'] = $a2;
+				$final[$name]['2BD'] = null;
 			
 			if(isset($a3))
-				$final[$name]['3BD'] = $a3;
+				$final[$name]['3BD'] = null;
 			
 			return ($final);
 }

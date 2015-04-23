@@ -2,6 +2,9 @@
 
 include ("dbconnect.php");
 include("Scraper.php");
+include ("report.php");
+
+
 $scraper = new Scraper;
 
 $web1 = ($scraper -> curl_download('http://www.bwalk.com/en-CA/Rent/Details/Alberta/Edmonton/Fairmont-Village/', 'Fairmont Village'));
@@ -18,6 +21,11 @@ $string = json_encode($finalarray);
 
 $dbconnect = new dbconnect;
 $dbconnect -> store($string);
+
+$report = new report;
+$id = "1";
+$report -> generate($id);
+
 
 
 
