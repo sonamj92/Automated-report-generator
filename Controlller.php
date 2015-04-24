@@ -1,3 +1,4 @@
+
 <?php
 
 include ("dbconnect.php");
@@ -19,11 +20,13 @@ $finalarray ['Southgate'] = $web3;
 
 $string = json_encode($finalarray);
 
+$list = array('Bwalk1', 'Bwalk2', 'Southgate');
+
 $dbconnect = new dbconnect;
 $dbconnect -> store($string);
 
 $report = new report;
-$id = "1";
+$id = "5";
 $report -> generate($id);
 
 

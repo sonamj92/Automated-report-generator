@@ -1,0 +1,58 @@
+/* RESET HTML */
+@import 'reset.css';
+
+/* GOOGLE FONTS */
+@import url(http://fonts.googleapis.com/css?family=Oswald);
+@import url(http://fonts.googleapis.com/css?family=Open+Sans);
+
+/* BASE */
+body { font-size: 14px; font-weight: 300; font-family: 'Open Sans', arial, sans-serif; }
+
+/* HEADER */
+#header { overflow: auto; padding: 25px; background-color: #369; box-shadow: 0 2px 7px #888888; }
+#header #title { float: left; width: 40%;  }
+#header #title h1 { color: #fff; font-size: 24px; font-weight: 600; font-family: 'Oswald'; }
+#header #nav { float: left; width: 35%; text-align: center; position: relative; }
+#header #logout { float: right; width: 25%; text-align: right; }
+
+/* NAV */
+#nav ul { list-style: none; position: absolute; top: -5px; left: 0; text-align: center; display: inline-table; }
+#nav ul:after { content: ""; clear: both; display: block; }
+#nav ul li { float: left; }
+#nav ul li:hover {}
+#nav ul li:hover a { background-color: #ed3; }
+#nav ul li a { display: block; padding: 10px 20px; margin-right: 20px; color: #369; border-radius: 5px; background-color: #fff; text-decoration: none; text-align: center; font-family: 'Oswald', arial, sans-serif; font-size: 14px; font-weight: 100; }
+#nav ul li:last-child a { margin-right: 0; }
+#nav ul ul li a { padding: 10px 20px; color: #fff; }
+#nav ul ul li a:hover { background: #4b545f; }
+#nav ul ul ul { position: absolute; left: 100%; top:0; }
+
+/* LOGOUT */
+#logout { color: #fff; margin-top: -5px; }
+#logout a { display: inline-block; padding: 10px 20px; color: #369; border-radius: 5px; background-color: #fff; margin-left: 20px; text-decoration: none; text-align: center; font-family: 'Oswald', arial, sans-serif; font-size: 14px; font-weight: 100; }
+#logout a:hover { background-color: #ed3; }
+
+/* CONTENT */
+#content { padding: 20px; }
+
+/* REPORT */
+#report, #report_header { margin: 0 auto; width: 1080px; }
+#report_header { margin-top: 30px; margin-bottom: 20px; overflow: auto; min-height: 40px; }
+#report_header #report_title { width: 49%; float: left;  }
+#report_header #report_actions { width: 49%; float: right; text-align: right;  }
+#report_header h2 { font-size: 20px; font-weight: 600; font-family: 'Oswald'; margin-bottom: 10px; }
+#report_actions table { margin-top: 10px; }
+#report_actions td { padding-right: 10px; font-weight: 500; }
+#report_actions td:last-child { padding-right: 0; }
+#report_actions td.highest, #report_actions td.lowest { min-width: 12px; }
+#report table { width: 100%; }
+.highest { background-color: #cff; }
+.lowest { background-color: #ffc; }
+#report td, #report th { padding: 20px; }
+#report td { border-bottom: 1px solid #ccc; }
+#report th { background-color: #369; color: #fff; text-align: left; }
+#report tr:first-child th:first-child { border-top-left-radius: 5px; }
+#report tr:first-child th:last-child { border-top-right-radius: 5px; }
+#report tfoot td { background-color: #adf; border-bottom: none; }
+#report tfoot td:first-child { border-bottom-left-radius: 5px; font-weight: 600; text-align: right; }
+#report tfoot td:last-child { border-bottom-right-radius: 5px;} 
