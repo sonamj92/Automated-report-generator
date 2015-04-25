@@ -13,10 +13,9 @@
 </head>
 <body>
 <?php include("Controlller.php");
-	$controlller = new Controlller;
-	$data = $controlller -> callme();
-	?>
- 
+	$ok = new Controlller;
+	$ok -> callme();
+ ?>
 <div id="base">
     <div id="block">
         <div class="row">
@@ -70,7 +69,7 @@
                         <tbody>
                             <tr>
                                 <td>Callingwood / Bach</td>
-                                <td>$data['Bwalk1']['Fairmont Village']['1BD']['Rent']</td>
+                                <td>$895.00</td>
                                 <td>1</td>
                                 <td>487</td>
                                 <td class="lowest">$495.00</td>
@@ -79,11 +78,11 @@
                                 <td>Fridge, Stove, Dishwasher</td>
                             </tr>
                             <tr>
-                                <td>SouthGate/ Bach</td>
+                                <td>Competition 1 / Bach</td>
                                 <td class="lowest">$850.00</td>
                                 <td>1</td>
                                 <td>592</td>
-                                <td>$data ['Southgate']['Southgate']['Bachelor']['Rent']</td>
+                                <td>$500.00</td>
                                 <td>No</td>
                                 <td>-</td>
                                 <td>Fridge, Stove, Dishwasher</td>
@@ -154,6 +153,5 @@
         </div>
     </div>
 </div>
-
 </body>
 </html>

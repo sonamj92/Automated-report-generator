@@ -1,35 +1,41 @@
 
 <?php
+	include("Scraper.php");
+	include ("dbconnect.php");
+	include ("report.php");
+	
+	class Controlller
+	{
+	
+	function callme()
+	{
+	$scraper = new Scraper;
 
-include ("dbconnect.php");
-include("Scraper.php");
-include ("report.php");
+	$web1 = ($scraper -> curl_download('http://www.bwalk.com/en-CA/Rent/Details/Alberta/Edmonton/Fairmont-Village/', 'Fairmont Village'));
 
+	$web2 = ($scraper -> curl_download('http://www.bwalk.com/en-CA/Rent/Details/Alberta/Edmonton/Meadowview-Manor/', 'Meadowview-Manor'));
 
-$scraper = new Scraper;
+	$web3 = ($scraper -> curl_download('http://www.rentmidwest.com/property/village-southgate', 'Southgate'));
 
-$web1 = ($scraper -> curl_download('http://www.bwalk.com/en-CA/Rent/Details/Alberta/Edmonton/Fairmont-Village/', 'Fairmont Village'));
+	$finalarray ['Bwalk1'] = $web1;
+	$finalarray ['Bwalk2'] = $web2;
+	$finalarray ['Southgate'] = $web3;
 
-$web2 = ($scraper -> curl_download('http://www.bwalk.com/en-CA/Rent/Details/Alberta/Edmonton/Meadowview-Manor/', 'Meadowview-Manor'));
+	$string = json_encode($finalarray);
 
-$web3 = ($scraper -> curl_download('http://www.rentmidwest.com/property/village-southgate', 'Southgate'));
+	//$list = array('Bwalk1', 'Bwalk2', 'Southgate');
 
-$finalarray ['Bwalk1'] = $web1;
-$finalarray ['Bwalk2'] = $web2;
-$finalarray ['Southgate'] = $web3;
+	$dbconnect = new dbconnect;
+	$dbconnect -> store($string);
 
-$string = json_encode($finalarray);
+	$report = new report;
+	$id = "3";
+	$jsontoarray = $report -> generate($id);
+	//print_r($jsontoarray);
 
-$list = array('Bwalk1', 'Bwalk2', 'Southgate');
-
-$dbconnect = new dbconnect;
-$dbconnect -> store($string);
-
-$report = new report;
-$id = "5";
-$report -> generate($id);
-
-
-
+	}
+	}
+	
+	
 
 ?>
