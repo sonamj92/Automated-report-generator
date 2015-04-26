@@ -274,7 +274,7 @@
                                 </tr>
                             <tr>
                                 <td>Fairmont Village /1 Bedroom</td>
-                                <td class="lowest"><?php if($data['Bwalk1']['Fairmont Village']['1BD']['Deposit'] == null||$data['Bwalk1']['Fairmont Village']['1BD']['Deposit'] == 0)
+                                <td class="lowest"><?php if(($data['Bwalk1']['Fairmont Village']['1BD']['Deposit']) == null||($data['Bwalk1']['Fairmont Village']['1BD']['Deposit'] == 0))
 															echo "NA";
 														else
 															print_r($data['Bwalk1']['Fairmont Village']['1BD']['Rent']); 
@@ -353,7 +353,7 @@
 								</td>
                                  </tr>
                             <tr>
-                                <td>Blue Quill Garden/ Bach</td>
+                                <td>Blue Quill Garden/ 1 Bedroom </td>
                                
 							   <td><?php if($data['Blue Quill Gardens']['Blue Quill Gardens']['1BD']['Rent'] == 0) 
 															echo "NA";
@@ -381,7 +381,7 @@
 								</td>
 								</tr>
                             <tr>
-                                <td>Pineridge / Bach</td>
+                                <td>Pineridge / 1 Bedroom </td>
                                 <td><?php if($data['Pineridge']['Pineridge']['1BD']['Rent'] == 0) 
 															echo "NA";
 														else
@@ -400,7 +400,7 @@
 															print_r($data['Pineridge']['Pineridge']['1BD']['Area']); 
 									?>
 								</td>
-                                <td><?php if($data['Pineridge']['Pineridge']['1BD']['Deposit'] == 0) 
+                                <td><?php if($data['Pineridge']['Pineridge']['1BD']['Deposit'] == null||$data['Pineridge']['Pineridge']['1BD']['Deposit'] == 0) 
 															echo "NA";
 														else
 															print_r($data['Pineridge']['Pineridge']['1BD']['Deposit']); 
@@ -409,7 +409,7 @@
                                 </tr>
 							
 							<tr>
-                                <td>Wellington Courts / Bach</td>
+                                <td>Wellington Courts / 1 Bedroom </td>
                                <td><?php if($data['Wellington Courts']['Wellington Courts']['1BD']['Rent'] == 0) 
 															echo "NA";
 														else
@@ -450,6 +450,209 @@
                 </div>
             </div>
         </div>
+		
+						       <div id="report">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Building / Type</th>
+                                <th>Rent</th>
+                                <th>Bath</th>
+                                <th>Sq. Ft.</th>
+                                <th>Deposit</th>
+                                </tr>
+                        </thead>
+			<div class="row">
+            <div id="content">
+                <div id="report_header">
+                    <div id="report_title">
+                        <h2>Report: Callingwood / 2 Bedroom </h2>
+                        <p>June 3, 2015 at 01:00</p>
+                    </div>
+                            <tr>
+                                <td>Callingwood / 2 Bedroom </td>
+                                <td>$895.00</td>
+                                <td>1</td>
+                                <td>487</td>
+                                <td class="lowest">$495.00</td>
+                                </tr>
+                            <tr>
+                                <td>Fairmont Village /2 Bedroom</td>
+                                <td class="lowest"><?php if(($data['Bwalk1']['Fairmont Village']['2BD']['Deposit']) == null)
+															echo "NA";
+														else
+															print_r($data['Bwalk1']['Fairmont Village']['2BD']['Rent']); 
+													?>
+								</td>
+                                <td><?php if($data['Bwalk1']['Fairmont Village']['2BD']['Bathroom'] == 0) 
+															echo "NA";
+														else
+															print_r($data['Bwalk1']['Fairmont Village']['2BD']['Bathroom']); 
+									?>
+								</td>
+                                <td><?php if($data['Bwalk1']['Fairmont Village']['2BD']['Area'] == 0) 
+															echo "NA";
+														else
+															print_r($data['Bwalk1']['Fairmont Village']['2BD']['Area']); 
+									?>
+								</td>
+                                <td><?php if($data['Bwalk1']['Fairmont Village']['2BD']['Deposit'] == 0) 
+															echo "NA";
+														else
+															print_r($data['Bwalk1']['Fairmont Village']['2BD']['Deposit']); 
+									?>
+								</td>
+                             </tr>
+                            <tr>
+                                <td> Meadowview Manor / 2 Bedroom  </td>
+                                <td><?php if($data['Bwalk2']['Meadowview-Manor']['2BD']['Rent'] == 0) 
+															echo "NA";
+														else
+															print_r($data['Bwalk2']['Meadowview-Manor']['2BD']['Rent']); 
+													?>
+								</td>
+                                <td><?php if($data['Bwalk2']['Meadowview-Manor']['2BD']['Bathroom'] == 0) 
+															echo "NA";
+														else
+															print_r($data['Bwalk2']['Meadowview-Manor']['2BD']['Bathroom']); 
+									?>
+								</td>
+                                <td><?php if($data['Bwalk2']['Meadowview-Manor']['2BD']['Area'] == 0) 
+															echo "NA";
+														else
+															print_r($data['Bwalk2']['Meadowview-Manor']['2BD']['Area']); 
+									?>
+								</td>
+                                <td><?php if($data['Bwalk2']['Meadowview-Manor']['2BD']['Deposit'] == null) 
+															echo "NA";
+														else
+															print_r($data['Bwalk2']['Meadowview-Manor']['2BD']['Deposit']); 
+									?>
+                                </tr>
+                            <tr>
+                                <td>Southgate / 2 Bedroom </td>
+                                 <td><?php if($data['Southgate']['Southgate']['2BD']['Rent'] == 0) 
+															echo "NA";
+														else
+															print_r($data['Southgate']['Southgate']['2BD']['Rent']); 
+									?>
+								</td>
+                                <td><?php if($data['Southgate']['Southgate']['2BD']['Bathroom'] == 0) 
+															echo "NA";
+														else
+															print_r($data['Southgate']['Southgate']['2BD']['Bathroom']); 
+									?>
+								</td>
+                                <td><?php if($data['Southgate']['Southgate']['2BD']['Area'] == 0) 
+															echo "NA";
+														else
+															print_r($data['Southgate']['Southgate']['2BD']['Area']); 
+									?>
+								</td>
+                                <td><?php if($data['Southgate']['Southgate']['2BD']['Deposit'] == 0) 
+															echo "NA";
+														else
+															print_r($data['Southgate']['Southgate']['2BD']['Deposit']); 
+									?>
+								</td>
+                                 </tr>
+                            <tr>
+                                <td>Blue Quill Garden/ 2 Bedroom </td>
+                               
+							   <td><?php if($data['Blue Quill Gardens']['Blue Quill Gardens']['2BD']['Rent'] == 0) 
+															echo "NA";
+														else
+															print_r($data['Blue Quill Gardens']['Blue Quill Gardens']['2BD']['Rent']); 
+									?>
+								</td>
+                                <td><?php if($data['Blue Quill Gardens']['Blue Quill Gardens']['2BD']['Bathroom'] == 0) 
+															echo "NA";
+														else
+															print_r($data['Blue Quill Gardens']['Blue Quill Gardens']['2BD']['Bathroom']); 
+									?>
+								</td>
+                                <td><?php if($data['Blue Quill Gardens']['Blue Quill Gardens']['2BD']['Area'] == 0) 
+															echo "NA";
+														else
+															print_r($data['Blue Quill Gardens']['Blue Quill Gardens']['2BD']['Area']); 
+									?>
+								</td>
+                                <td><?php if($data['Blue Quill Gardens']['Blue Quill Gardens']['2BD']['Deposit'] == 0) 
+															echo "NA";
+														else
+															print_r($data['Blue Quill Gardens']['Blue Quill Gardens']['2BD']['Deposit']); 
+									?>
+								</td>
+								</tr>
+                            <tr>
+                                <td>Pineridge / 2 Bedroom </td>
+                                <td><?php if($data['Pineridge']['Pineridge']['2BD']['Rent'] == null) 
+															echo "NA";
+														else
+															print_r($data['Pineridge']['Pineridge']['2BD']['Rent']); 
+									?>
+								</td>
+                                <td><?php if($data['Pineridge']['Pineridge']['2BD']['Bathroom'] == null) 
+															echo "NA";
+														else
+															print_r($data['Pineridge']['Pineridge']['2BD']['Bathroom']); 
+									?>
+								</td>
+                                <td><?php if($data['Pineridge']['Pineridge']['2BD']['Area'] == null) 
+															echo "NA";
+														else
+															print_r($data['Pineridge']['Pineridge']['2BD']['Area']); 
+									?>
+								</td>
+                                <td><?php if($data['Pineridge']['Pineridge']['2BD']['Deposit'] == null) 
+															echo "NA";
+														else
+															print_r($data['Pineridge']['Pineridge']['2BD']['Deposit']); 
+									?>
+								</td>
+                                </tr>
+							
+							<tr>
+                                <td>Wellington Courts / 2 Bedroom </td>
+                               <td><?php if($data['Wellington Courts']['Wellington Courts']['2BD']['Rent'] == null) 
+															echo "";
+														else
+															print_r($data['Wellington Courts']['Wellington Courts']['2BD']['Rent']); 
+									?>
+								</td>
+                                <td><?php if($data['Wellington Courts']['Wellington Courts']['1BD']['Bathroom'] == null) 
+															echo "NA";
+														else
+															print_r($data['Wellington Courts']['Wellington Courts']['2BD']['Bathroom']); 
+									?>
+								</td>
+                                <td><?php if($data['Wellington Courts']['Wellington Courts']['2BD']['Area'] == 0) 
+															echo "NA";
+														else
+															print_r($data['Wellington Courts']['Wellington Courts']['2BD']['Area']); 
+									?>
+								</td>
+                                <td><?php if($data['Wellington Courts']['Wellington Courts']['2BD']['Deposit'] == 0) 
+															echo "NA";
+														else
+															print_r($data['Wellington Courts']['Wellington Courts']['2BD']['Deposit']); 
+									?>
+								</td>
+                                </tr>
+                            
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <td>Averages:</td>
+                                <td>$892.00</td>
+                                <td>1</td>
+                                <td>538</td>
+                                <td>$520.00</td>
+                                </tr>
+                        </tfoot>
+                    </table>
+                </div>
+            </div>
         <div class="row">
             <div id="footer">
                 <div id="footer_left"></div>
