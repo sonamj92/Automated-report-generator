@@ -478,13 +478,13 @@
                                 </tr>
                             <tr>
                                 <td>Fairmont Village /2 Bedroom</td>
-                                <td class="lowest"><?php if(($data['Bwalk1']['Fairmont Village']['2BD']['Deposit']) == null)
+                                <td class="lowest"><?php if(($data['Bwalk1']['Fairmont Village']['2BD']['Rent']) == "0")
 															echo "NA";
 														else
 															print_r($data['Bwalk1']['Fairmont Village']['2BD']['Rent']); 
 													?>
 								</td>
-                                <td><?php if($data['Bwalk1']['Fairmont Village']['2BD']['Bathroom'] == 0) 
+                                <td><?php if($data['Bwalk1']['Fairmont Village']['2BD']['Bathroom'] == "0") 
 															echo "NA";
 														else
 															print_r($data['Bwalk1']['Fairmont Village']['2BD']['Bathroom']); 
