@@ -31,15 +31,15 @@
 	$finalarray ['Wellington Courts'] = $web6;
 	
 	$string = json_encode($finalarray);
-
+	
 	$dbconnect = new dbconnect;
 	$dbconnect -> store($string);
 
 	$report = new report;
-	$id = "75";
+	$id = "56";
 	$jsontoarray = $report -> generate($id);
-	print_r($jsontoarray);
-
+	
+	return ($jsontoarray);
 	}
 	}
 	

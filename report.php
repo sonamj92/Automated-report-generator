@@ -24,8 +24,10 @@ class report
 		}			
 		
 		$data = json_decode($data,true);	
-		return($data);
 		print_r($data);
+		
+		return($data);
+		
 		
 	}
 }
