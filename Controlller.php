@@ -22,6 +22,8 @@
 	$web5 = ($scraper -> curl_download('http://www.har-par.com/properties.php?PropertyID=141', 'Pineridge'));
 	
 	$web6 = ($scraper -> curl_download('http://www.rentedmonton.com/Detail.aspx?prop=d46d9fab-d7bf-43e9-bf2e-c73ee30f26a1', 'Wellington Courts'));
+	
+	$web7 = ($scraper -> curl_download('https://www.broadstreet.ca/property/131/Merecroft+Gardens/','Mercroft+Gardens'));
 
 	$finalarray ['Bwalk1'] = $web1;
 	$finalarray ['Bwalk2'] = $web2;
@@ -29,6 +31,7 @@
 	$finalarray ['Blue Quill Gardens'] = $web4;
 	$finalarray ['Pineridge'] = $web5;
 	$finalarray ['Wellington Courts'] = $web6;
+	$finalarray ['Mercroft+Gardens'] = $web7;
 	
 	$string = json_encode($finalarray);
 	
@@ -36,7 +39,7 @@
 	$dbconnect -> store($string);
 
 	$report = new report;
-	$id = "56";
+	$id = "139";
 	$jsontoarray = $report -> generate($id);
 	
 	return ($jsontoarray);

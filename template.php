@@ -23,8 +23,8 @@
                 <div id="title"><h1>Kelson Group: Rent Comparisson Tool</h1></div>
                 <div id="nav">
                     <ul>
-                        <li><a href="#">Dashboard</a></li>
-                        <li><a href="#">Reports</a></li>
+                         <li><a href="http://localhost/folder/Automated-report-generator/Front%20Page.php">Dashboard</a></li>
+                        <li><a href="http://localhost/folder/Automated-report-generator/testinglastfive.php">Reports</a></li>
                         <li><a href="#">Settings</a></li>
                     </ul>
                 </div>
@@ -234,7 +234,33 @@
 									?>
 								</td>
                                 </tr>
-                            
+                            <tr>
+                                <td>Mercroft Gardens / Bach</td>
+                               <td><?php if($data['Mercroft+Gardens']['Mercroft+Gardens']['Bachelor']['Rent'] == "0" || $data['Mercroft+Gardens']['Mercroft+Gardens']['Bachelor']['Rent'] == null) 
+															echo "NA";
+														else
+															print_r($data['Mercroft+Gardens']['Mercroft+Gardens']['Bachelor']['Rent']); 
+									?>
+								</td>
+                                <td><?php if($data['Mercroft+Gardens']['Mercroft+Gardens']['Bachelor']['Bathroom'] == "0" || $data['Mercroft+Gardens']['Mercroft+Gardens']['Bachelor']['Bathroom'] == null) 
+															echo "NA";
+														else
+															print_r($data['Mercroft+Gardens']['Mercroft+Gardens']['Bachelor']['Bathroom']); 
+									?>
+								</td>
+                                <td><?php if($data['Mercroft+Gardens']['Mercroft+Gardens']['Bachelor']['Area'] == "0" || $data['Mercroft+Gardens']['Mercroft+Gardens']['Bachelor']['Area'] == null) 
+															echo "NA";
+														else
+															print_r($data['Mercroft+Gardens']['Mercroft+Gardens']['Bachelor']['Area']); 
+									?>
+								</td>
+                                <td><?php if($data['Mercroft+Gardens']['Mercroft+Gardens']['Bachelor']['Deposit'] == "0" || $data['Mercroft+Gardens']['Mercroft+Gardens']['Bachelor']['Deposit'] == null) 
+															echo "NA";
+														else
+															print_r($data['Mercroft+Gardens']['Mercroft+Gardens']['Bachelor']['Deposit']); 
+									?>
+								</td>
+                                </tr>
                         </tbody>
                         <tfoot>
                             <tr>
@@ -435,7 +461,33 @@
 									?>
 								</td>
                                 </tr>
-                            
+                            <tr>
+                                <td>Mercroft Gardens /1 Bedroom</td>
+                               <td><?php if($data['Mercroft+Gardens']['Mercroft+Gardens']['1BD']['Rent'] == "0" || $data['Mercroft+Gardens']['Mercroft+Gardens']['1BD']['Rent'] == null) 
+															echo "NA";
+														else
+															print_r($data['Mercroft+Gardens']['Mercroft+Gardens']['1BD']['Rent']); 
+									?>
+								</td>
+                                <td><?php if($data['Mercroft+Gardens']['Mercroft+Gardens']['1BD']['Bathroom'] == "0" || $data['Mercroft+Gardens']['Mercroft+Gardens']['1BD']['Bathroom'] == null) 
+															echo "NA";
+														else
+															print_r($data['Mercroft+Gardens']['Mercroft+Gardens']['1BD']['Bathroom']); 
+									?>
+								</td>
+                                <td><?php if($data['Mercroft+Gardens']['Mercroft+Gardens']['1BD']['Area'] == "0" || $data['Mercroft+Gardens']['Mercroft+Gardens']['1BD']['Area'] == null) 
+															echo "NA";
+														else
+															print_r($data['Mercroft+Gardens']['Mercroft+Gardens']['1BD']['Area']); 
+									?>
+								</td>
+                                <td><?php if($data['Mercroft+Gardens']['Mercroft+Gardens']['1BD']['Deposit'] == "0" || $data['Mercroft+Gardens']['Mercroft+Gardens']['2BD']['Rent'] == null) 
+															echo "NA";
+														else
+															print_r($data['Mercroft+Gardens']['Mercroft+Gardens']['1BD']['Deposit']); 
+									?>
+								</td>
+                                </tr>
                         </tbody>
                         <tfoot>
                             <tr>
@@ -639,7 +691,33 @@
 									?>
 								</td>
                                 </tr>
-                            
+                            <tr>
+                                <td>Mercroft Gardens /2 Bedroom</td>
+                               <td><?php if($data['Mercroft+Gardens']['Mercroft+Gardens']['2BD']['Rent'] == "0" || $data['Mercroft+Gardens']['Mercroft+Gardens']['2BD']['Rent'] == null) 
+															echo "NA";
+														else
+															print_r($data['Mercroft+Gardens']['Mercroft+Gardens']['2BD']['Rent']); 
+									?>
+								</td>
+                                <td><?php if($data['Mercroft+Gardens']['Mercroft+Gardens']['2BD']['Bathroom'] == "0" || $data['Mercroft+Gardens']['Mercroft+Gardens']['2BD']['Bathroom'] == null) 
+															echo "NA";
+														else
+															print_r($data['Mercroft+Gardens']['Mercroft+Gardens']['2BD']['Bathroom']); 
+									?>
+								</td>
+                                <td><?php if($data['Mercroft+Gardens']['Mercroft+Gardens']['2BD']['Area'] == "0" || $data['Mercroft+Gardens']['Mercroft+Gardens']['2BD']['Area'] == null) 
+															echo "NA";
+														else
+															print_r($data['Mercroft+Gardens']['Mercroft+Gardens']['2BD']['Area']); 
+									?>
+								</td>
+                                <td><?php if($data['Mercroft+Gardens']['Mercroft+Gardens']['2BD']['Deposit'] == "0" || $data['Mercroft+Gardens']['Mercroft+Gardens']['2BD']['Rent'] == null) 
+															echo "NA";
+														else
+															print_r($data['Mercroft+Gardens']['Mercroft+Gardens']['2BD']['Deposit']); 
+									?>
+								</td>
+                                </tr>
                         </tbody>
                         <tfoot>
                             <tr>
@@ -841,7 +919,33 @@
 									?>
 								</td>
                                 </tr>
-                            
+                             <tr>
+                                <td>Mercroft Gardens /3 Bedroom</td>
+                               <td><?php if($data['Mercroft+Gardens']['Mercroft+Gardens']['3BD']['Rent'] == "0" || $data['Mercroft+Gardens']['Mercroft+Gardens']['3BD']['Rent'] == null) 
+															echo "NA";
+														else
+															print_r($data['Mercroft+Gardens']['Mercroft+Gardens']['3BD']['Rent']); 
+									?>
+								</td>
+                                <td><?php if($data['Mercroft+Gardens']['Mercroft+Gardens']['3BD']['Bathroom'] == "0" || $data['Mercroft+Gardens']['Mercroft+Gardens']['3BD']['Bathroom'] == null) 
+															echo "NA";
+														else
+															print_r($data['Mercroft+Gardens']['Mercroft+Gardens']['3BD']['Bathroom']); 
+									?>
+								</td>
+                                <td><?php if($data['Mercroft+Gardens']['Mercroft+Gardens']['3BD']['Area'] == "0" || $data['Mercroft+Gardens']['Mercroft+Gardens']['3BD']['Area'] == null) 
+															echo "NA";
+														else
+															print_r($data['Mercroft+Gardens']['Mercroft+Gardens']['3BD']['Area']); 
+									?>
+								</td>
+                                <td><?php if($data['Mercroft+Gardens']['Mercroft+Gardens']['3BD']['Deposit'] == "0" || $data['Mercroft+Gardens']['Mercroft+Gardens']['3BD']['Rent'] == null) 
+															echo "NA";
+														else
+															print_r($data['Mercroft+Gardens']['Mercroft+Gardens']['3BD']['Deposit']); 
+									?>
+								</td>
+                                </tr>
                         </tbody>
                         <tfoot>
                             <tr>
