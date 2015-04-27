@@ -84,7 +84,7 @@ function curl_download($Url, $name)
                                  break;
                             }
 							
-                            else if(preg_match('/\$\d+(?:\.\d+)?.*|\b\d+(?:\.\d+)\b/',$parts[$i],$matches4)) // if(preg_match('/\$\d\,\d+|\$\d+(?:\.\d+)?.*/',$parts[$i],$matches4))
+                            else if(preg_match('/\$\d+(?:\.\d+)?.*|\b\d+(?:\.\d)\b/',$parts[$i],$matches4)) // if(preg_match('/\$\d\,\d+|\$\d+(?:\.\d+)?.*/',$parts[$i],$matches4))
                             {
 								$rent = $matches4[0];
                                 break ;
@@ -188,8 +188,8 @@ function curl_download($Url, $name)
                 {
                     for($i = $e; $i < $lengthArray; $i++)
                     {
-                        //if(preg_match('/\$\d\,\d+|\$\d+(?:\.\d+)?.*/',$parts[$i],$matches4))
-			if(preg_match('/\$\d+(?:\.\d+)?.*|\b\d+(?:\.\d+)\b/',$parts[$i],$matches4))
+                        
+					if(preg_match('/\$\d\,\d+|\$\d+(?:\.\d+)?.*|\b\d+(?:\.\d+)\b/',$parts[$i],$matches4))
                         {
                            $rent = $matches4[0];
                             break ;
@@ -294,8 +294,8 @@ function curl_download($Url, $name)
                     			{
 						for($k = $j; $k < $lengthArray; $k++)
                         			{
-                            				//if(preg_match('/\$\d\,\d+|\$\d+(?:\.\d+)?.+/',$parts[$k],$matches4))
-							if(preg_match('/\$\d+(?:\.\d+)?.*|\b\d+(?:\.\d+)\b/',$parts[$k],$matches4))
+                            				
+							if(preg_match('/\$\d\,\d+|\$\d+(?:\.\d+)?.*|\b\d+(?:\.\d+)\b/',$parts[$k],$matches4))
 							{
 									$rent = $matches4[0];
                                 	break ;
@@ -405,8 +405,8 @@ function curl_download($Url, $name)
 						{
 							for($k3 = $j3; $k3 < $lengthArray; $k3++)
                             				{
-								//if(preg_match('/\$\d\,\d|\$\d+(?:\.\d+)?.+/',$parts[$k3],$matches4))
-								if(preg_match('/\$\d+(?:\.\d+)?.*|\b\d+(?:\.\d+)\b/',$parts[$k3],$matches4))
+								
+								if(preg_match('/\$\d\,\d+|\$\d+(?:\.\d+)?.*|\b\d+(?:\.\d+)\b/',$parts[$k3],$matches4))
                                 				{
                                     					$rent = $matches4[0];
                                     					break ;

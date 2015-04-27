@@ -82,6 +82,16 @@
 		
 		header("Location: http://localhost/folder/Automated-report-generator/testinglastfive.php");
 		die();
+		
+		
 	}
+	
+		function display($timestamp)
+		{	
+			$report = new report;
+			$jsontoarray = $report -> generate($timestamp);
+			return ($jsontoarray);
+		}
+	
 	}
 	
