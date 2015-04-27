@@ -21,9 +21,6 @@ function curl_download($Url, $name)
         $output = curl_exec($ch);
         curl_close($ch);
 
-        
-		echo nl2br ("****-------------- $Url  ----------****  \n");
-		
 		$beds = 0;
 		$area = 0;
 		$rent = 0;
@@ -37,10 +34,9 @@ function curl_download($Url, $name)
 			/*Tokenizes the scraped data*/
         $parts = preg_split('~(</?[\w][^>]*>)~',$string_html , -1, PREG_SPLIT_DELIM_CAPTURE | PREG_SPLIT_NO_EMPTY);
 
-//	print_r($parts);
 
         $lengthArray = count($parts);    
-	$temp=1;
+		$temp=1;
 		
 
 
@@ -55,9 +51,8 @@ function curl_download($Url, $name)
 		
             if(preg_match('/^\W*(?:\w+\b\W*){1,15}bach|Bachelor/',$parts[$c1],$matches2))
             {
-                echo nl2br ("-------------- $matches2[0]  ---------- $c1 \n");
-									
-					/*This for loop will search for the deposit price. Once it finds it, it will break the loop.*/
+   
+				/*This for loop will search for the deposit price. Once it finds it, it will break the loop.*/
                 for($d = $c1; $d< $lengthArray; $d++)
                {
 					if($d== $c1+300)
@@ -70,8 +65,6 @@ function curl_download($Url, $name)
                     {
                         if(preg_match('/\$\d+(?:\.\d+)?./',$parts[$d],$matches6))
                         {
-				
-                            echo nl2br ("Deposit :  $matches6[0] $d \n");
 							$deposit = $matches6[0];
                             break;
                         }                               
@@ -93,7 +86,6 @@ function curl_download($Url, $name)
 							
                             else if(preg_match('/\$\d+(?:\.\d+)?.*|\b\d+(?:\.\d+)\b/',$parts[$i],$matches4)) // if(preg_match('/\$\d\,\d+|\$\d+(?:\.\d+)?.*/',$parts[$i],$matches4))
                             {
-                                echo nl2br ("Price : $matches4[0] $i \n");  
 								$rent = $matches4[0];
                                 break ;
                             }
@@ -102,10 +94,10 @@ function curl_download($Url, $name)
                     }
                 }
 						
-		/*This for loop will search for the number of bathrooms. Once it finds it, it will break the loop.*/	
+				/*This for loop will search for the number of bathrooms. Once it finds it, it will break the loop.*/	
 		for($f1 = $c1; $f1 < $lengthArray; $f1++)
-                {
-			if($f1== $c1+300)
+        {
+						if($f1== $c1+300)
                         {
                                 $bath = "0";
                                 break;
@@ -114,8 +106,7 @@ function curl_download($Url, $name)
                     	{
                         	if(preg_match('/(?<!\d)\d{1}(?!\d)|\d{1}/',$parts[$f1],$matches))
                         	{
-                            		echo nl2br ("Bathrooms :  $matches[0] $f1 \n");
-							$bath = $matches[0];
+                            		$bath = $matches[0];
                             		break;
                         	}
 			}
@@ -133,8 +124,7 @@ function curl_download($Url, $name)
                     {
                         if(preg_match('/(?<!\d)(\d+)(\d+)(?!\d)/',$parts[$g],$matches))
                         {
-                            echo nl2br ("Square Feet :  $matches[0] $g \n");
-							$area = $matches[0];
+                            $area = $matches[0];
                             break;
                         }
                     }
@@ -164,7 +154,7 @@ function curl_download($Url, $name)
 				
 		if(preg_match('/\b^[1].(?i)bedroom|Bedrooms:.[1]|^[1].Bedroom|[1].bdrm|bedroom.[1]|[1].bedroom+?\b/',$parts[$c2],$matches2))
 		{
-			echo nl2br ("-------------- $matches2[0]  ---------- $c2 \n");
+			
 			
 			/*This for loop will search for the deposit price. Once it finds it, it will break this loop.*/
 			for($d = $c2; $d < $lengthArray; $d++)
@@ -179,7 +169,6 @@ function curl_download($Url, $name)
                 {
                     if(preg_match('/\$\d\,\d+|\$\d+(?:\.\d+)?.+/',$parts[$d],$matches6))
                     {
-						echo nl2br ("Deposit :  $matches6[0] $d \n");
 						$deposit = $matches6[0];
                         break;
                     }
@@ -202,8 +191,7 @@ function curl_download($Url, $name)
                         //if(preg_match('/\$\d\,\d+|\$\d+(?:\.\d+)?.*/',$parts[$i],$matches4))
 			if(preg_match('/\$\d+(?:\.\d+)?.*|\b\d+(?:\.\d+)\b/',$parts[$i],$matches4))
                         {
-                            echo nl2br ("Price: $matches4[0] $i \n");
-							$rent = $matches4[0];
+                           $rent = $matches4[0];
                             break ;
                         }
                     }
@@ -224,8 +212,7 @@ function curl_download($Url, $name)
                     		{
                         		if(preg_match('/\d{1}|(?<!\d)\d{1}(?!\d)/',$parts[$f],$matches))
                         		{
-                            			echo nl2br ("Bathrooms :  $matches[0] $f \n");
-						$bath = $matches[0];
+                            			$bath = $matches[0];
                             			break;
                         		}
 				}
@@ -244,9 +231,8 @@ function curl_download($Url, $name)
                 		{
 					if(preg_match('/(\d+-?)+\d+|(?<!\d)(\d+)(\d+)(?!\d)/',$parts[$g],$matches))
                     			{
-                        			echo nl2br ("Square Feet :  $matches[0] $g \n");
-						$area = $matches[0];
-						break;
+                        			$area = $matches[0];
+									break;
                     			}
                 		}
 			}
@@ -274,7 +260,7 @@ function curl_download($Url, $name)
 		
 			if(preg_match('/\b[2].(?i)bedroom|[2].bdrm|Bedrooms:.[2]|bedroom.[2]|[2].bed+?\b/',$parts[$c],$matches2))
             		{
-                    		echo nl2br ("-------------- $matches2[0]  ---------- $c \n");
+                    		
 						
 				/*This for loop will search for the deposit price. Once it finds it, it will break this loop.*/
                    		for($h = $c; $h< $lengthArray; $h++)
@@ -289,8 +275,7 @@ function curl_download($Url, $name)
 					{
 						if(preg_match('/\$\d\,\d+|\$\d+(?:\.\d+)?.+/',$parts[$h],$matches6))
                             			{
-                                			echo nl2br ("Deposit :  $matches6[0] $h \n");
-							$deposit = $matches6[0];
+                                			$deposit = $matches6[0];
                                 			break;
                             			}
                         		}
@@ -312,9 +297,8 @@ function curl_download($Url, $name)
                             				//if(preg_match('/\$\d\,\d+|\$\d+(?:\.\d+)?.+/',$parts[$k],$matches4))
 							if(preg_match('/\$\d+(?:\.\d+)?.*|\b\d+(?:\.\d+)\b/',$parts[$k],$matches4))
 							{
-                                				echo nl2br ("Price : $matches4[0] $k \n");
-								$rent = $matches4[0];
-                                			break ;
+									$rent = $matches4[0];
+                                	break ;
                             				}
                         			}
                      				break;
@@ -334,8 +318,7 @@ function curl_download($Url, $name)
                     			{
 						if(preg_match('/\d{1}|(?<!\d)\d{1}(?!\d)/',$parts[$l],$matches))
 						{
-                            				echo nl2br ("Bathrooms :  $matches[0] $l \n");
-							$bath = $matches[0];
+                            				$bath = $matches[0];
                             				break;
                         			}
 					}
@@ -356,8 +339,7 @@ function curl_download($Url, $name)
 						{
 							if(preg_match('/(\d+-?)+\d+|(?<!\d)(\d+)(\d+)(?!\d)/',$parts[$n],$matches))
                             				{
-                                				echo nl2br ("Square Feet :  $matches[0] $n \n");
-								$area = $matches[0];
+                                				$area = $matches[0];
                                 				break;
                             				}
 						}
@@ -389,7 +371,7 @@ function curl_download($Url, $name)
 				
 				if(preg_match('/\b[3].(?i)bedroom|Bedrooms:.[3]|bedroom.[3]+?\b/',$parts[$c],$matches2))
 				{
-                    			echo nl2br ("-------------- $matches2[0] ---------- $c \n");
+                    		
                                          
 					/*This for loop will search for the deposit price. Once it finds it, it will break this loop.*/    
 					for($h3 = $c; $h< $lengthArray; $h3++)
@@ -404,8 +386,7 @@ function curl_download($Url, $name)
 						{
 							if(preg_match('/\$\d+(?:\.\d+)?.*/',$parts[$h3],$matches6))
                             				{
-                                				echo nl2br ("Deposit : $matches6[0] $h3 \n");
-								$deposit = $matches6[0];
+                                				$deposit = $matches6[0];
                                 				break;
                             				}
                         			}
@@ -427,8 +408,7 @@ function curl_download($Url, $name)
 								//if(preg_match('/\$\d\,\d|\$\d+(?:\.\d+)?.+/',$parts[$k3],$matches4))
 								if(preg_match('/\$\d+(?:\.\d+)?.*|\b\d+(?:\.\d+)\b/',$parts[$k3],$matches4))
                                 				{
-                                    					echo nl2br ("Price : $matches4[0] $j3 \n");
-									$rent = $matches4[0];
+                                    					$rent = $matches4[0];
                                     					break ;
 								}
                             				}
@@ -449,8 +429,7 @@ function curl_download($Url, $name)
                         			{
                             				if(preg_match('/(?<!\d)\d{1}(?!\d)/',$parts[$l3],$matches))
                             				{
-                                				echo nl2br ("Bathrooms : $matches[0] $l3 \n");
-								$bath = $matches[0];
+                                				$bath = $matches[0];
                                 				break;
                             				}
                         			}
@@ -469,8 +448,7 @@ function curl_download($Url, $name)
                         			{
 							if(preg_match('/(?<!\d)(\d+)(\d+)(?!\d)/',$parts[$m3],$matches))
                             				{
-                                				echo nl2br ("Square Feet : $matches[0] $m3 \n");
-								$area = $matches[0];
+                                				$area = $matches[0];
                                 				break;
                             				}
                        				}
