@@ -80,6 +80,8 @@
 		$dbconnect = new dbconnect;
 		$dbconnect -> store($string);
 		
+		header("Location: http://localhost/folder/Automated-report-generator/testinglastfive.php");
+		die();
 	}
 	}
 	

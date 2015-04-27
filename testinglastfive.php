@@ -103,7 +103,7 @@
 		<td>  <form action = "template.php" method = "POST"><?php print_r($r[5]); ?></td> <td> <input type = "Submit" name = "timestamp" value = "<?php print_r($t[5]); ?>"</td>
 			</form>
 		<tr>
-			<td> <form action = "Controlller.php" method = "POST"> <input type = "Submit" name = "yes" value = "Scrape Current Price"> </td>
+			<td> <form action = "Controlller.php" method = "POST"> <input type = "Submit" name = "yes" value = "Scrape Current Data"> </td>
 		</tr>
 		</tr>
 		</tr>
