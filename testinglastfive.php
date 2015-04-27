@@ -74,7 +74,7 @@
             <div id="content">
 			<div id="report_header">
                     
-                        <h2> Reports Available </h2>
+                        <h2> Most Recent Reports  </h2>
                         <p><script type="text/javascript">
 						document.write ('<p> Current Date and Time: <span id="date-time">', new Date().toLocaleString(), '<\/span><\/p>')
 						if (document.getElementById) onload = function () 
@@ -82,6 +82,7 @@
 							setInterval ("document.getElementById ('date-time').firstChild.data = new Date().toLocaleString()", 25)
 						}
 						</script></p>
+						
                   
 		<tr>
 		<td>  <form action = "template.php" method = "POST"> <?php print_r($r[1]); ?></td> <td> <input type = "Submit" name = "timestamp" value = "<?php print_r($t[1]); ?>" </td> 
