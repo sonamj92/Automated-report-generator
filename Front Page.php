@@ -26,5 +26,6 @@
                 <div id="logout">Welcome, Jason <a href="#">LOGOUT</a></div>
             </div>
         </div>
+		
 </body>
 </html>

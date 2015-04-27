@@ -13,7 +13,12 @@
 <body>
 <?php include("Controlller.php");
 	$ok = new Controlller;
-	$data = $ok -> callme();
+	if(isset($_POST['timestamp']))
+	{
+		$timestamp = $_POST['timestamp'];
+		$data = $ok -> display($timestamp);
+	}
+	
 	print_r($data);
 	?>
 <div id="base">
