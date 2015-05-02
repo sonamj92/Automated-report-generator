@@ -1,7 +1,4 @@
-<!DOCTYPE html>
-
-<html>
-	
+<html>	
 <head>
 	
 	
@@ -18,7 +15,7 @@
 		$timestamp = $_POST['timestamp'];
 		$data = $ok -> display($timestamp);
 	}
-
+	
 	?>
 <div id="base">
     <div id="block">
@@ -41,12 +38,14 @@
                 <div id="report_header">
                     <div id="report_title">
                         <h2>Report: Callingwood / Bach</h2>
-						<script> document.write ('<p> Current Date and Time: <span id="date-time">', new Date().toLocaleString(), '<\/span><\/p>')
-						if (document.getElementById) onload = function () 
-						{
-							setInterval ("document.getElementById ('date-time').firstChild.data = new Date().toLocaleString()", 25)
-						}
-						</script></p>
+                        <p><script type="text/javascript">
+                                                document.write ('<p> Current Date and Time: <span id="date-time">', new Date().toLocaleString(), '<\/span><\/p>')
+                                                if (document.getElementById) onload = function ()
+                                                {
+                                                        setInterval ("document.getElementById ('date-time').firstChild.data = new Date().toLocaleString()", 25)
+                                                }
+                                                </script></p>
+
                     </div>
                     <div id="report_actions">
                         <a href="#">Create PDF</a><br/>
@@ -298,12 +297,14 @@
                 <div id="report_header">
                     <div id="report_title">
                         <h2>Report: Callingwood / 1 Bedroom </h2>
-                        <script> document.write ('<p> Current Date and Time: <span id="date-time">', new Date().toLocaleString(), '<\/span><\/p>')
-						if (document.getElementById) onload = function () 
-						{
-							setInterval ("document.getElementById ('date-time').firstChild.data = new Date().toLocaleString()", 25)
-						}
-						</script></p>
+                        <p><script type="text/javascript">
+                                                document.write ('<p> Current Date and Time: <span id="date-time">', new Date().toLocaleString(), '<\/span><\/p>')
+                                                if (document.getElementById) onload = function ()
+                                                {
+                                                        setInterval ("document.getElementById ('date-time').firstChild.data = new Date().toLocaleString()", 25)
+                                                }
+                                                </script></p>
+
                     </div>
                             <tr>
                                 <td>Callingwood / 1 Bedroom </td>
@@ -533,12 +534,14 @@
                 <div id="report_header">
                     <div id="report_title">
                         <h2>Report: Callingwood / 2 Bedroom </h2>
-                        <script> document.write ('<p> Current Date and Time: <span id="date-time">', new Date().toLocaleString(), '<\/span><\/p>')
-						if (document.getElementById) onload = function () 
-						{
-							setInterval ("document.getElementById ('date-time').firstChild.data = new Date().toLocaleString()", 25)
-						}
-						</script></p>
+                        <p><script type="text/javascript">
+                                                document.write ('<p> Current Date and Time: <span id="date-time">', new Date().toLocaleString(), '<\/span><\/p>')
+                                                if (document.getElementById) onload = function ()
+                                                {
+                                                        setInterval ("document.getElementById ('date-time').firstChild.data = new Date().toLocaleString()", 25)
+                                                }
+                                                </script></p>
+
                     </div>
                             <tr>
                                 <td>Callingwood / 2 Bedroom </td>
@@ -766,12 +769,14 @@
                 <div id="report_header">
                     <div id="report_title">
                         <h2>Report: Callingwood / 3 Bedroom </h2>
-                        <script> document.write ('<p> Current Date and Time: <span id="date-time">', new Date().toLocaleString(), '<\/span><\/p>')
-						if (document.getElementById) onload = function () 
-						{
-							setInterval ("document.getElementById ('date-time').firstChild.data = new Date().toLocaleString()", 25)
-						}
-						</script></p>
+                        <p><script type="text/javascript">
+                                                document.write ('<p> Current Date and Time: <span id="date-time">', new Date().toLocaleString(), '<\/span><\/p>')
+                                                if (document.getElementById) onload = function ()
+                                                {
+                                                        setInterval ("document.getElementById ('date-time').firstChild.data = new Date().toLocaleString()", 25)
+                                                }
+                                                </script></p>
+
                     </div>
                             <tr>
                                 <td>Callingwood / 3 Bedroom </td>

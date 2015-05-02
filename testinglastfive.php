@@ -1,16 +1,9 @@
 <?php
-	
-	include ("Controlller.php");
-	
-	
-	$accounts = mysql_connect("localhost", "root", "")
-			or die(mysql_error());
-		mysql_select_db("Kelson_test", $accounts);
+	include ("Controlller.php");	
+	$accounts = mysql_connect("localhost", "root", "root")or die(mysql_error());
+	mysql_select_db("Kelson_test", $accounts);
 		
-	$sql = mysql_query("SELECT Kelson_test.scraped_data.Report_ID, Kelson_test.scraped_data.Timestamp
-				FROM Kelson_test.scraped_data
-					ORDER BY Kelson_test.scraped_data.Report_ID DESC 
-							LIMIT 5")or die('Error: ' .mysql_error());
+	$sql = mysql_query("SELECT id , TIME FROM scraped_data ORDER BY id DESC LIMIT 5")or die('Error: ' .mysql_error());
 		 
 	$t = array();
 	$r = array();
@@ -21,13 +14,13 @@
 		{
 			foreach($row as $key => $value)
 			{
-				if($key == "Report_ID")
+				if($key == "id")
 				{
 					$j++;
 					$r[$j] = $value;
 				}
 					
-				if($key == "Timestamp")
+				if($key == "TIME")
 				{
 					$i++;
 					$t[$i] = $value;
@@ -74,7 +67,7 @@
             <div id="content">
 			<div id="report_header">
                     
-                        <h2> Most Recent Reports  </h2>
+                        <h2> Reports Available </h2>
                         <p><script type="text/javascript">
 						document.write ('<p> Current Date and Time: <span id="date-time">', new Date().toLocaleString(), '<\/span><\/p>')
 						if (document.getElementById) onload = function () 
@@ -82,7 +75,6 @@
 							setInterval ("document.getElementById ('date-time').firstChild.data = new Date().toLocaleString()", 25)
 						}
 						</script></p>
-						
                   
 		<tr>
 		<td>  <form action = "template.php" method = "POST"> <?php print_r($r[1]); ?></td> <td> <input type = "Submit" name = "timestamp" value = "<?php print_r($t[1]); ?>" </td> 

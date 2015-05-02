@@ -36,10 +36,8 @@ function curl_download($Url, $name)
 
 
         $lengthArray = count($parts);    
-		$temp=1;
+		$temp = 1;
 		
-
-
 			/*This loop will find details of Bachelor suites from all the websites. Once it matches, it will run internal for loops to find number of bathrooms, deposit and rental price*/
 		for($c1 = 1; $c1 < $lengthArray; $c1++)
         {
@@ -51,8 +49,8 @@ function curl_download($Url, $name)
 		
             if(preg_match('/^\W*(?:\w+\b\W*){1,15}bach|Bachelor/',$parts[$c1],$matches2))
             {
-   
-				/*This for loop will search for the deposit price. Once it finds it, it will break the loop.*/
+               			
+					/*This for loop will search for the deposit price. Once it finds it, it will break the loop.*/
                 for($d = $c1; $d< $lengthArray; $d++)
                {
 					if($d== $c1+300)
@@ -71,48 +69,49 @@ function curl_download($Url, $name)
                     }
                 }
 					
-		/*This for loop will search for the rental price. Once it finds it, it will break the loop.*/	
+			/*This for loop will search for the rental price. Once it finds it, it will break the loop.*/	
 		for($e = $c1; $e< $lengthArray; $e++)
+        {
+            if(preg_match('/(?i)rate|price|rent+?/',$parts[$e],$matches3))
+			{
+                for($i = $e; $i < $lengthArray; $i++)
                 {
-                    if(preg_match('/(?i)rate|price|rent+?/',$parts[$e],$matches3))
+					if($i== $e+300)
                     {
-                        for($i = $e; $i < $lengthArray; $i++)
-                        {
-							if($i== $e+300)
-                            {
-								$rent = "0";
-                                 break;
-                            }
-							
-                            else if(preg_match('/\$\d+(?:\.\d+)?.*|\b\d+(?:\.\d)\b/',$parts[$i],$matches4)) // if(preg_match('/\$\d\,\d+|\$\d+(?:\.\d+)?.*/',$parts[$i],$matches4))
-                            {
-								$rent = $matches4[0];
-                                break ;
-                            }
-                        }
-                    break;
+						$rent = "0";
+                        break;
                     }
+							
+					else if(preg_match('/\$\d+(?:\.\d+)?.*|\b\d+(?:\.\d)\b/',$parts[$i],$matches4))
+					{
+						$rent = $matches4[0];
+						break ;
+					}
                 }
+                    break;
+            }
+        }
 						
-				/*This for loop will search for the number of bathrooms. Once it finds it, it will break the loop.*/	
+			/*This for loop will search for the number of bathrooms. Once it finds it, it will break the loop.*/	
 		for($f1 = $c1; $f1 < $lengthArray; $f1++)
         {
-						if($f1== $c1+300)
-                        {
-                                $bath = "0";
-                                break;
-                        }
-                    	else if(preg_match('/\b(?<!\d)(?i)Baths|bathrooms+?\b/',$parts[$f1],$matches6))
-                    	{
-                        	if(preg_match('/(?<!\d)\d{1}(?!\d)|\d{1}/',$parts[$f1],$matches))
-                        	{
-                            		$bath = $matches[0];
-                            		break;
-                        	}
+			if($f1== $c1+300)
+            {
+                $bath = "0";
+				break;
+            }
+                    	
+			else if(preg_match('/\b(?<!\d)(?i)Baths|bathrooms+?\b/',$parts[$f1],$matches6))
+            {
+                if(preg_match('/(?<!\d)\d{1}(?!\d)|\d{1}/',$parts[$f1],$matches))
+                {
+                    $bath = $matches[0];
+                    break;
+                }
 			}
 		}
                  	
-		/*This for loop will search for the size of the property. Once it finds it, it will break the loop.*/			           
+			/*This for loop will search for the size of the property. Once it finds it, it will break the loop.*/			           
 		for($g = $c1; $g < $lengthArray; $g++)
                 {
 		    if($g== $c1+300)
@@ -124,7 +123,7 @@ function curl_download($Url, $name)
                     {
                         if(preg_match('/(?<!\d)(\d+)(\d+)(?!\d)/',$parts[$g],$matches))
                         {
-                            $area = $matches[0];
+                           $area = $matches[0];
                             break;
                         }
                     }
@@ -154,9 +153,7 @@ function curl_download($Url, $name)
 				
 		if(preg_match('/\b^[1].(?i)bedroom|Bedrooms:.[1]|^[1].Bedroom|[1].bdrm|bedroom.[1]|[1].bedroom+?\b/',$parts[$c2],$matches2))
 		{
-			
-			
-			/*This for loop will search for the deposit price. Once it finds it, it will break this loop.*/
+				/*This for loop will search for the deposit price. Once it finds it, it will break this loop.*/
 			for($d = $c2; $d < $lengthArray; $d++)
             {
 				if($d== $c2+100)
@@ -169,6 +166,7 @@ function curl_download($Url, $name)
                 {
                     if(preg_match('/\$\d\,\d+|\$\d+(?:\.\d+)?.+/',$parts[$d],$matches6))
                     {
+						//echo nl2br ("Deposit :  $matches6[0] $d \n");
 						$deposit = $matches6[0];
                         break;
                     }
@@ -184,19 +182,18 @@ function curl_download($Url, $name)
                     break;
                 }
                 
-		if(preg_match('/(?i)rate|price|rent+?/',$parts[$e],$matches3))
-                {
-                    for($i = $e; $i < $lengthArray; $i++)
+			if(preg_match('/(?i)rate|price|rent+?/',$parts[$e],$matches3))
+            {
+                for($i = $e; $i < $lengthArray; $i++)
+               {
+                    if(preg_match('/\$\d\,\d+|\$\d+(?:\.\d+)?.*|\b\d+(?:\.\d+)\b/',$parts[$i],$matches4))
                     {
-                        
-					if(preg_match('/\$\d\,\d+|\$\d+(?:\.\d+)?.*|\b\d+(?:\.\d+)\b/',$parts[$i],$matches4))
-                        {
-                           $rent = $matches4[0];
-                            break ;
-                        }
-                    }
-                break;
+                        $rent = $matches4[0];
+                        break ;
+					}
                 }
+                break;
+            }
 			}	
 					
 			/*This for loop will search for the number of bathrooms. Once it finds it, it will break the loop.*/	
@@ -218,7 +215,7 @@ function curl_download($Url, $name)
 				}
 			}
 										
-			/*This for loop will search for the size of the property. Once it finds it, it will break the loop.*/			           
+				/*This for loop will search for the size of the property. Once it finds it, it will break the loop.*/			           
 			for($g = $c2; $g< $lengthArray; $g++)
             		{
 				if($g== $c2+100)
@@ -228,13 +225,13 @@ function curl_download($Url, $name)
                 		}
                         	
 				if(preg_match('/\b(?<!\d)(?i)Area:|square|sqft|frSqFt+?\b/',$parts[$g],$matches7))
-                		{
+                {
 					if(preg_match('/(\d+-?)+\d+|(?<!\d)(\d+)(\d+)(?!\d)/',$parts[$g],$matches))
-                    			{
-                        			$area = $matches[0];
-									break;
-                    			}
-                		}
+                   {
+                        area = $matches[0];
+						break;
+                    }
+               }
 			}
 					
 				$a1 = array(
@@ -260,45 +257,42 @@ function curl_download($Url, $name)
 		
 			if(preg_match('/\b[2].(?i)bedroom|[2].bdrm|Bedrooms:.[2]|bedroom.[2]|[2].bed+?\b/',$parts[$c],$matches2))
             		{
-                    		
-						
-				/*This for loop will search for the deposit price. Once it finds it, it will break this loop.*/
+                    	/*This for loop will search for the deposit price. Once it finds it, it will break this loop.*/
                    		for($h = $c; $h< $lengthArray; $h++)
                    		{
-					if($h== $c+100)
+							if($h== $c+100)
                         		{
                             			$deposit = "0";
                             			break;
                         		}
                         	
-					if(preg_match('/(?i)deposit|Deposit:+?/',$parts[$h],$matches5))
-					{
-						if(preg_match('/\$\d\,\d+|\$\d+(?:\.\d+)?.+/',$parts[$h],$matches6))
-                            			{
-                                			$deposit = $matches6[0];
-                                			break;
-                            			}
-                        		}
-                    		}
+							if(preg_match('/(?i)deposit|Deposit:+?/',$parts[$h],$matches5))
+							{
+								if(preg_match('/\$\d\,\d+|\$\d+(?:\.\d+)?.+/',$parts[$h],$matches6))
+								{
+									$deposit = $matches6[0];
+									break;
+								}
+							}
+                    	}
 						
 				/*This for loop will search for the rental price. Once it finds it, it will break this loop.*/
 				for($j = $c; $j< $lengthArray; $j++)
-                		{
+                {
 					if($j== $c+100)
 					{
-                        			$rent = "0";
-                        			break;
-                    			}
+						$rent = "0";
+                        break;
+                    }
                         		
 					if(preg_match('/(?i)rate|price|rent|amount+?/',$parts[$j],$matches3))
                     			{
-						for($k = $j; $k < $lengthArray; $k++)
+								for($k = $j; $k < $lengthArray; $k++)
                         			{
-                            				
-							if(preg_match('/\$\d\,\d+|\$\d+(?:\.\d+)?.*|\b\d+(?:\.\d+)\b/',$parts[$k],$matches4))
-							{
-									$rent = $matches4[0];
-                                	break ;
+                            			if(preg_match('/\$\d\,\d+|\$\d+(?:\.\d+)?.*|\b\d+(?:\.\d+)\b/',$parts[$k],$matches4))
+											{
+                                				$rent = $matches4[0];
+												break ;
                             				}
                         			}
                      				break;
@@ -307,45 +301,45 @@ function curl_download($Url, $name)
                                                 
 				/*This for loop will search for the number of bathrooms. Once it finds it, it will break the loop.*/	
 			for($l = $c; $l< $lengthArray; $l++)
-                	{
+            {
 				if($l== $c+100)
-                   		{
-                        		$bath = "0";
-                        		break;
-                   		}
+                {
+                    $bath = "0";
+					break;
+                }
                         		
-					if(preg_match('/\b(?<!\d)(?i)bathrooms|bath|Baths+?\b/',$parts[$l],$matches6))
-                    			{
-						if(preg_match('/\d{1}|(?<!\d)\d{1}(?!\d)/',$parts[$l],$matches))
-						{
-                            				$bath = $matches[0];
-                            				break;
-                        			}
+				if(preg_match('/\b(?<!\d)(?i)bathrooms|bath|Baths+?\b/',$parts[$l],$matches6))
+                {
+					if(preg_match('/\d{1}|(?<!\d)\d{1}(?!\d)/',$parts[$l],$matches))
+					{
+                        $bath = $matches[0];
+                        break;
 					}
 				}
+			}
 
                             	/*This for loop will search for the size of the property. Once it finds it, it will break the loop.*/			           
-				for($m = $c; $m< $lengthArray; $m++)
-                		{
-					if($m== $c+100)
-                    			{
-                        			$area = "0";
-                        			break;
-                    			}
+			for($m = $c; $m< $lengthArray; $m++)
+           {
+				if($m== $c+100)
+               {
+                    $area = "0";
+                    break;
+                }
                         		
-					if(preg_match('/\b(?<!\d)(?i)area|square|sqft|frSqFt|Sq..Ft.+?\b/',$parts[$m],$matches7))
-                    			{
-                        			for($n = $m; $n< $lengthArray; $n++)
-						{
-							if(preg_match('/(\d+-?)+\d+|(?<!\d)(\d+)(\d+)(?!\d)/',$parts[$n],$matches))
-                            				{
-                                				$area = $matches[0];
-                                				break;
-                            				}
-						}
-						break;
-                    			}
-                		}
+				if(preg_match('/\b(?<!\d)(?i)area|square|sqft|frSqFt|Sq..Ft.+?\b/',$parts[$m],$matches7))
+                {
+                    for($n = $m; $n< $lengthArray; $n++)
+					{
+						if(preg_match('/(\d+-?)+\d+|(?<!\d)(\d+)(\d+)(?!\d)/',$parts[$n],$matches))
+                        {
+                            $area = $matches[0];
+                            break;
+                        }
+					}
+					break;
+                }
+            }
 					
 					$a2 = array(
 									"Rent" => $rent,
@@ -360,7 +354,7 @@ function curl_download($Url, $name)
 				/*End of for loop that searches for the 2BDRM suite*/
 			}
 
-			/*Fourth Main for Loop that finds details of 3BDRM properties */
+				/*Fourth Main for Loop that finds details of 3BDRM properties */
 			for($c = 1; $c< $lengthArray; $c++)
 			{
 				if(preg_match('/<option value="bachelor">/',$parts[$c],$matches2))
@@ -371,88 +365,85 @@ function curl_download($Url, $name)
 				
 				if(preg_match('/\b[3].(?i)bedroom|Bedrooms:.[3]|bedroom.[3]+?\b/',$parts[$c],$matches2))
 				{
-                    		
-                                         
-					/*This for loop will search for the deposit price. Once it finds it, it will break this loop.*/    
+                    	/*This for loop will search for the deposit price. Once it finds it, it will break this loop.*/    
 					for($h3 = $c; $h< $lengthArray; $h3++)
 					{
 						if($h3== $c+100)
-                      				{
-                            				$deposit = "0";
-                          				break;
+						{
+                            $deposit = "0";
+							break;
 						}
                        
-					    	if(preg_match('/(?i)deposit|Deposit:+?/',$parts[$h3],$matches5))
+					    if(preg_match('/(?i)deposit|Deposit:+?/',$parts[$h3],$matches5))
 						{
 							if(preg_match('/\$\d+(?:\.\d+)?.*/',$parts[$h3],$matches6))
-                            				{
-                                				$deposit = $matches6[0];
-                                				break;
-                            				}
-                        			}
-                    			}
+                            {
+                                $deposit = $matches6[0];
+								break;
+                            }
+                       	}
+                    }
 						
 					/*This for loop will search for the rental price. Once it finds it, it will break this loop.*/
 					for($j3 = $c; $j< $lengthArray; $j3++)
-                    			{
+                    {
 						if($j3== $c+100)
-                            			{
-                                			$rent = "0";
-                                			break;
-                            			}
+                        {
+                            $rent = "0";
+                            break;
+                      	}
 							
 						if(preg_match('/(?i)rate|price+|rent?/',$parts[$j3],$matches3))
 						{
 							for($k3 = $j3; $k3 < $lengthArray; $k3++)
-                            				{
-								
+                            {
 								if(preg_match('/\$\d\,\d+|\$\d+(?:\.\d+)?.*|\b\d+(?:\.\d+)\b/',$parts[$k3],$matches4))
-                                				{
-                                    					$rent = $matches4[0];
-                                    					break ;
+                                {
+                                    $rent = $matches4[0];
+									break ;
 								}
-                            				}
-                        				break;
-                        			}
-                    			}
+                            }
+							break;
+                       }
+                    }
                                                
-					/*This for loop will search for the number of bathrooms. Once it finds it, it will break the loop.*/	
+						/*This for loop will search for the number of bathrooms. Once it finds it, it will break the loop.*/	
 					for($l3 = $c; $l3 < $lengthArray; $l3++)
-                    			{
+                    {
 						if($l3== $c+100)
-                        			{
-                            				$bath = "0";
-                            				break;
-                        			}
+                        {
+                            $bath = "0";
+                            break;
+                        }
                  
 						if(preg_match('/\b(?<!\d)(?i)Bath|bathrooms+?\b/',$parts[$l3],$matches6))
-                        			{
-                            				if(preg_match('/(?<!\d)\d{1}(?!\d)/',$parts[$l3],$matches))
-                            				{
-                                				$bath = $matches[0];
-                                				break;
-                            				}
-                        			}
-                    			}
+						{
+                            if(preg_match('/(?<!\d)\d{1}(?!\d)/',$parts[$l3],$matches))
+							{
+                                $bath = $matches[0];
+                                break;
+                            }
+                        }
+                    }
 					                            
-					/*This for loop will search for the size of the property. Once it finds it, it will break the loop.*/			           
+						/*This for loop will search for the size of the property. Once it finds it, it will break the loop.*/			           
 					for($m3 = $c; $m3< $lengthArray; $m3++)
-                    			{
+					{
 						if($m3== $c+100)
-                        			{
-                            				$area = "0";
-                            				break;
-                        			}
+						{
+                            $area = "0";
+                            break;
+                        }
                         			
 						if(preg_match('/\b(?<!\d)(?i)square|sqft|frSqFt+?\b/',$parts[$m3],$matches7))
-                        			{
+                        {
 							if(preg_match('/(?<!\d)(\d+)(\d+)(?!\d)/',$parts[$m3],$matches))
-                            				{
-                                				$area = $matches[0];
-                                				break;
-                            				}
-                       				}
-                    			}
+                            {
+                                $area = $matches[0];
+                                break;
+							}
+                        }
+                    }
 					
 					$a3 = array(
 									"Rent" => $rent,
@@ -493,4 +484,3 @@ function curl_download($Url, $name)
 }
 
 ?>
-

@@ -1,18 +1,15 @@
-
-
 <?php 
-
 class report
 {
-		
-	function generate($timestamp)
+	
+	function generate($string)
+	
 	{
-		$accounts = mysql_connect("localhost", "root", "")
-			or die(mysql_error());
+		$accounts = mysql_connect("localhost", "root", "root")or die(mysql_error());
 		mysql_select_db("Kelson_test", $accounts);
 		
-		$sql = mysql_query("select data from scraped_data where Timestamp = '$timestamp'") or die('Error: ' .mysql_error());
-		
+		$sql = mysql_query("SELECT DATA FROM scraped_data WHERE TIME ='$string'")or die (mysql_error());
+
 		while($query_row = mysql_fetch_assoc($sql))
 		{
 			foreach($query_row as $key => $value)
@@ -22,7 +19,6 @@ class report
 		}			
 		
 		$data = json_decode($data,true);	
-		
 		return($data);
 	}
 }
